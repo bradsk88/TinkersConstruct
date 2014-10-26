@@ -12,12 +12,12 @@ import net.minecraft.world.World;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.world.TinkerWorld;
 
-public class GravelOre extends BlockSand
+public class CobaltGravelOre extends BlockSand
 {
-    public String[] textureNames = new String[] { "iron", "gold", "copper", "tin", "aluminum", "cobalt" };
+    public String[] textureNames = new String[] { "copper" };
     public IIcon[] icons;
 
-    public GravelOre()
+    public CobaltGravelOre()
     {
         this.blockMaterial = Material.craftedSnow;
         this.setCreativeTab(TConstructRegistry.blockTab);
@@ -66,7 +66,7 @@ public class GravelOre extends BlockSand
     {
         /*if (par1 == 1)
             return Item.goldNugget.itemID;*/
-        return Item.getItemFromBlock(TinkerWorld.oreGravel);
+        return Item.getItemFromBlock(TinkerWorld.oreCobaltGravel);
     }
 
     @Override

@@ -3,11 +3,14 @@ package tconstruct.world.itemblocks;
 import mantle.blocks.abstracts.MultiItemBlock;
 import net.minecraft.block.Block;
 
-public class GravelOreItem extends MultiItemBlock
+public class CobaltGravelOreItem extends MultiItemBlock
 {
-    public static final String blockTypes[] = { "iron", "gold", "copper", "tin", "aluminum", "cobalt" };
+	
+	public static final int COBALT = 0;
+	
+    public static final String blockTypes[] = { "cobalt" };
 
-    public GravelOreItem(Block b)
+    public CobaltGravelOreItem(Block b)
     {
         super(b, "block.ore.gravel", blockTypes);
         setMaxDamage(0);

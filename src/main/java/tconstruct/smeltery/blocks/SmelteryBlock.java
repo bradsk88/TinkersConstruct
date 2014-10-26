@@ -23,6 +23,9 @@ import tconstruct.util.config.PHConstruct;
 
 public class SmelteryBlock extends InventoryBlock
 {
+    public static final int DRAIN_OUT = 4;
+    public static final int DRAIN_BASIN = 5;
+
     Random rand;
     String texturePrefix = "";
 
@@ -54,8 +57,11 @@ public class SmelteryBlock extends InventoryBlock
     @Override
     public String[] getTextureNames ()
     {
-        String[] textureNames = { "smeltery_side", "smeltery_inactive", "smeltery_active", "drain_side", "drain_out", "drain_basin", "searedbrick", "searedstone", "searedcobble", "searedpaver", "searedbrickcracked", "searedroad", "searedbrickfancy", "searedbricksquare", "searedcreeper" };
-
+        String[] textureNames = {
+                "smeltery_side", "smeltery_inactive", "smeltery_active", "drain_side",
+                "drain_out", "drain_basin", "searedbrick", "searedstone", "searedcobble",
+                "searedpaver", "searedbrickcracked", "searedroad", "searedbrickfancy", "searedbricksquare",
+                "searedcreeper" };
         if (!texturePrefix.equals(""))
             for (int i = 0; i < textureNames.length; i++)
                 textureNames[i] = texturePrefix + "_" + textureNames[i];
@@ -170,9 +176,9 @@ public class SmelteryBlock extends InventoryBlock
             byte face = 0;
             if (logic instanceof IFacingLogic)
                 face = ((IFacingLogic) logic).getRenderDirection();
-            float f = (float) x + 0.5F;
-            float f1 = (float) y + 0.5F + (random.nextFloat() * 6F) / 16F;
-            float f2 = (float) z + 0.5F;
+            float f = x + 0.5F;
+            float f1 = y + 0.5F + (random.nextFloat() * 6F) / 16F;
+            float f2 = z + 0.5F;
             float f3 = 0.52F;
             float f4 = random.nextFloat() * 0.6F - 0.3F;
             switch (face)
@@ -314,11 +320,13 @@ public class SmelteryBlock extends InventoryBlock
 
     //Comparator
 
+    @Override
     public boolean hasComparatorInputOverride ()
     {
         return true;
     }
 
+    @Override
     public int getComparatorInputOverride (World world, int x, int y, int z, int comparatorSide)
     {
         int meta = world.getBlockMetadata(x, y, z);

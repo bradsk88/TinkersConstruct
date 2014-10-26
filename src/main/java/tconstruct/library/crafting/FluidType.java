@@ -1,6 +1,9 @@
 package tconstruct.library.crafting;
 
 import java.util.*;
+
+import com.google.common.base.Preconditions;
+
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
 
@@ -14,9 +17,9 @@ public class FluidType
 
     public static HashMap<String, FluidType> fluidTypes = new HashMap<String, FluidType>();
 
-    public FluidType(Block block, int meta, int baseTemperature, Fluid fluid, boolean isToolpart)
+    public FluidType(Block blockShownInTank, int meta, int baseTemperature, Fluid fluid, boolean isToolpart)
     {
-        this.renderBlock = block;
+        this.renderBlock = Preconditions.checkNotNull(blockShownInTank);
         this.renderMeta = meta;
         this.baseTemperature = baseTemperature;
         this.fluid = fluid;

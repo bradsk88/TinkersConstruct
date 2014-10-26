@@ -1,25 +1,29 @@
 package tconstruct.world.gen;
 
+import ca.bradj.orecore.item.OreCoreItems;
+
 import com.google.common.collect.*;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
 import java.util.Random;
+
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
-
 import static net.minecraft.world.biome.BiomeGenBase.*;
 import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SAND;
 
 public class TerrainGenEventHandler
 {
-    private final SurfaceOreGen ironSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 0, 12, true);
-    private final SurfaceOreGen goldSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 1, 20, true);
-    private final SurfaceOreGen copperSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 2, 12, true);
-    private final SurfaceOreGen tinSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 3, 12, true);
-    private final SurfaceOreGen aluminumSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 4, 12, true);
-    private final SurfaceOreGen cobaltSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 5, 30, true);
+    private final SurfaceOreGen ironSurface = new SurfaceOreGen(OreCoreItems.ironGravel, 0, 12, true);
+    private final SurfaceOreGen goldSurface = new SurfaceOreGen(OreCoreItems.goldGravel, 1, 20, true);
+    private final SurfaceOreGen copperSurface = new SurfaceOreGen(OreCoreItems.copperGravel, 2, 12, true);
+    private final SurfaceOreGen tinSurface = new SurfaceOreGen(OreCoreItems.tinGravel, 3, 12, true);
+    private final SurfaceOreGen aluminumSurface = new SurfaceOreGen(OreCoreItems.bauxiteGravel, 1, 12, true);
+    private final SurfaceOreGen cobaltSurface = new SurfaceOreGen(TinkerWorld.oreCobaltGravel, 5, 30, true);
 
     private static ImmutableCollection<BiomeGenBase> EXTRA_ORE_BIOMES = ImmutableList.of(extremeHills, extremeHillsEdge);
 

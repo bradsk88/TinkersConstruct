@@ -1,17 +1,26 @@
 package tconstruct.tools.blocks;
 
-import cpw.mods.fml.relauncher.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import tconstruct.blocks.TConstructBlock;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MultiBrick extends TConstructBlock
 {
-    static String blockTextures[] = { "brick_obsidian", "brick_sandstone", "brick_netherrack", "brick_stone_refined", "brick_iron", "brick_gold", "brick_lapis", "brick_diamond", "brick_redstone", "brick_bone", "brick_slime", "brick_blueslime", "brick_endstone", "brick_obsidian_ingot" };
+    public static final int IRON = 4;
+    public static final int GOLD = 5;
+    public static final int OBSIDIAN = 0;
+
+    static String[] blockTextures = { "brick_obsidian", "brick_sandstone", "brick_netherrack", "brick_stone_refined",
+        "brick_iron", "brick_gold", "brick_lapis", "brick_diamond", "brick_redstone", "brick_bone",
+        "brick_slime", "brick_blueslime", "brick_endstone", "brick_obsidian_ingot" };
 
     public MultiBrick()
     {
@@ -114,7 +123,7 @@ public class MultiBrick extends TConstructBlock
     {
         int meta = world.getBlockMetadata(x, y, z);
         if (meta == 10 || meta == 11)
-            return AxisAlignedBB.getBoundingBox(x, y, z, (double) x + 1.0D, (double) y + 0.625D, (double) z + 1.0D);
+            return AxisAlignedBB.getBoundingBox(x, y, z, x + 1.0D, y + 0.625D, z + 1.0D);
         return super.getCollisionBoundingBoxFromPool(world, x, y, z);
     }
 

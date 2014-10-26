@@ -124,7 +124,7 @@ public class TinkerTools
 
     // recipe stuff
     public static boolean thaumcraftAvailable;
-    
+
     //Dev/Null Stuff
     public static Item openBlocksDevNull;
 
@@ -297,7 +297,7 @@ public class TinkerTools
         ModifyBuilder.registerModifier(TinkerTools.modAttack);
     }
 
-    void setupToolTabs ()
+    void setupToolTabs()
     {
         TConstructRegistry.materialTab.init(new ItemStack(TinkerTools.manualBook, 1, 0));
         TConstructRegistry.partTab.init(new ItemStack(TinkerTools.titleIcon, 1, 255));
@@ -679,9 +679,9 @@ public class TinkerTools
 
         ItemStack ironpick = ToolBuilder.instance.buildTool(new ItemStack(TinkerTools.pickaxeHead, 1, 6), new ItemStack(TinkerTools.toolRod, 1, 2), new ItemStack(TinkerTools.binding, 1, 6), "");
         if (batHardened != null)
-            TConstructClientRegistry.registerManualModifier("fluxmod", ironpick.copy(), (ItemStack) batHardened);
+            TConstructClientRegistry.registerManualModifier("fluxmod", ironpick.copy(), batHardened);
         if (basicCell != null)
-            TConstructClientRegistry.registerManualModifier("fluxmod2", ironpick.copy(), (ItemStack) basicCell);
+            TConstructClientRegistry.registerManualModifier("fluxmod2", ironpick.copy(), basicCell);
 
         /* Thaumcraft */
         Object obj = ItemHelper.getStaticItem("itemResource", "thaumcraft.common.config.ConfigItems");
@@ -721,7 +721,7 @@ public class TinkerTools
             {
             } // No need to handle
         }
-        
+
         //OpenBlocks
         openBlocksDevNull = GameRegistry.findItem("OpenBlocks", "devnull");
     }

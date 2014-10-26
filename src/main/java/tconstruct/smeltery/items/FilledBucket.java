@@ -32,9 +32,9 @@ public class FilledBucket extends ItemBucket
     public ItemStack onItemRightClick (ItemStack stack, World world, EntityPlayer player)
     {
         float var4 = 1.0F;
-        double trueX = player.prevPosX + (player.posX - player.prevPosX) * (double) var4;
-        double trueY = player.prevPosY + (player.posY - player.prevPosY) * (double) var4 + 1.62D - (double) player.yOffset;
-        double trueZ = player.prevPosZ + (player.posZ - player.prevPosZ) * (double) var4;
+        double trueX = player.prevPosX + (player.posX - player.prevPosX) * var4;
+        double trueY = player.prevPosY + (player.posY - player.prevPosY) * var4 + 1.62D - player.yOffset;
+        double trueZ = player.prevPosZ + (player.posZ - player.prevPosZ) * var4;
         boolean wannabeFull = false;
         MovingObjectPosition position = this.getMovingObjectPositionFromPlayer(world, player, wannabeFull);
 
@@ -48,15 +48,15 @@ public class FilledBucket extends ItemBucket
              * FillBucketEvent event = new FillBucketEvent(player, stack, world,
              * position); if (MinecraftForge.EVENT_BUS.post(event)) { return
              * stack; }
-             * 
+             *
              * if (event.getResult() == Event.Result.ALLOW) { if
              * (player.capabilities.isCreativeMode) { return stack; }
-             * 
+             *
              * if (--stack.stackSize <= 0) { return event.result; }
-             * 
+             *
              * if (!player.inventory.addItemStackToInventory(event.result)) {
              * player.dropPlayerItem(event.result); }
-             * 
+             *
              * return stack; }
              */
 
@@ -183,4 +183,35 @@ public class FilledBucket extends ItemBucket
     public static final String[] materialNames = new String[] { "Iron", "Gold", "Copper", "Tin", "Aluminum", "Cobalt", "Ardite", "Bronze", "AluBrass", "Manyullyn", "Alumite", "Obsidian", "Steel", "Glass", "Stone", "Villager", "Cow", "Nickel", "Lead", "Silver", "Shiny", "Invar", "Electrum", "Ender", "Slime", "Glue", "PigIron" };
 
     public static final String[] textureNames = new String[] { "iron", "gold", "copper", "tin", "aluminum", "cobalt", "ardite", "bronze", "alubrass", "manyullyn", "alumite", "obsidian", "steel", "glass", "stone", "emerald", "blood", "nickel", "lead", "silver", "shiny", "invar", "electrum", "ender", "slime", "glue", "pigiron" };
+
+    public static final int IRON = 0;
+    public static final int GOLD = 1;
+    public static final int COPPER = 2;
+    public static final int TIN = 3;
+    public static final int ALUMINUM = 4;
+    public static final int COBALT = 5;
+    public static final int ARDITE = 6;
+    public static final int BRONZE = 7;
+    public static final int ALUBRASS = 8;
+
+    public static final int MANYULLYN = 9;
+    public static final int ALUMITE = 10;
+    public static final int OBSIDIAN = 11;
+    public static final int STEEL = 12;
+    public static final int GLASS = 13;
+    public static final int STONE = 14;
+    public static final int EMERALD = 15;
+    public static final int BLOOD = 16;
+    public static final int NICKEL = 17;
+    public static final int LEAD = 18;
+    public static final int SILVER = 19;
+    public static final int SHINY = 20;
+    public static final int INVAR = 21;
+    public static final int ELECTRUM = 22;
+    public static final int ENDER = 23;
+    public static final int GLUE = 25;
+    public static final int PIG_IRON = 26;
+
+
+
 }

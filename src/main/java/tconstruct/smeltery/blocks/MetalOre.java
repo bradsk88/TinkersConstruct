@@ -9,7 +9,10 @@ import tconstruct.blocks.TConstructBlock;
 
 public class MetalOre extends TConstructBlock
 {
-    public MetalOre(Material material, float hardness, String[] tex)
+    public static final int COBALT = 1;
+	public static final int ARDITE = 2;
+
+	public MetalOre(Material material, float hardness, String[] tex)
     {
         super(material, hardness, tex);
     }

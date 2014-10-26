@@ -11,6 +11,7 @@ import tconstruct.blocks.TConstructBlock;
 
 public class SpeedBlock extends TConstructBlock
 {
+    public static final int BROWNSTONE_ROUGH = 0;
     public static String[] textureNames = new String[] { "brownstone_rough", "brownstone_rough_road", "brownstone_smooth", "brownstone_smooth_brick", "brownstone_smooth_road", "brownstone_smooth_fancy", "brownstone_smooth_chiseled" };
 
     public SpeedBlock()
