@@ -340,23 +340,23 @@ public class TinkerWorld
         String[] patSurround = { "###", "#m#", "###" };
 
         // Metal conversion Recipes
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ALUBRASS), patBlock, '#',
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.ALUBRASS), patBlock, '#',
                 new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUBRASS_INGOT));
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.COBALT), patBlock, '#',
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.COBALT), patBlock, '#',
                 new ItemStack(TinkerTools.materials, 1, MaterialItem.COBALT_INGOT));
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ARDITE), patBlock, '#',
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.ARDITE), patBlock, '#',
                 new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_INGOT));
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.MANYULLYN), patBlock, '#',
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.MANYULLYN), patBlock, '#',
                 new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_INGOT));
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ALUMITE), patBlock, '#',
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.ALUMITE), patBlock, '#',
                 new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUMITE_INGOT));
 
         GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ALUBRASS_INGOT), "m", 'm',
-                new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ALUBRASS));
+                new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.ALUBRASS));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.COBALT_INGOT), "m", 'm',
-                new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.COBALT));
+                new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.COBALT));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ARDITE_INGOT), "m", 'm',
-                new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ARDITE));
+                new ItemStack(TinkerWorld.metalBlock, 1, TMetalBlock.ARDITE));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.MANYULLYN_INGOT), "m", 'm',
                 new ItemStack(TinkerWorld.metalBlock, 1, MaterialItem.MANYULLYN_INGOT));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ALUMITE_INGOT), "m", 'm',

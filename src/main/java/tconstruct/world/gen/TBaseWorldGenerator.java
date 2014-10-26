@@ -1,27 +1,26 @@
 package tconstruct.world.gen;
 
-import cpw.mods.fml.common.IWorldGenerator;
-
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import tconstruct.smeltery.itemblocks.MetalItemBlock;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
-import tconstruct.world.itemblocks.MetalOreItemBlock;
+import tconstruct.world.blocks.TMetalBlock;
 import tconstruct.world.items.OreBerries;
+import cpw.mods.fml.common.IWorldGenerator;
 
 public class TBaseWorldGenerator implements IWorldGenerator
 {
     public TBaseWorldGenerator()
     {
-        cobalt = new WorldGenMinable(TinkerWorld.oreSlag, 1, MetalItemBlock.COBALT, Blocks.netherrack);
-        ardite = new WorldGenMinable(TinkerWorld.oreSlag, 2, MetalItemBlock.ARDITE, Blocks.netherrack);
+        cobalt = new WorldGenMinable(TinkerWorld.oreSlag, 1, TMetalBlock.COBALT, Blocks.netherrack);
+        ardite = new WorldGenMinable(TinkerWorld.oreSlag, 2, TMetalBlock.ARDITE, Blocks.netherrack);
 
         ironBush = new OreberryBushGen(TinkerWorld.oreBerry, OreBerries.IRON, 12);
         goldBush = new OreberryBushGen(TinkerWorld.oreBerry, OreBerries.GOLD, 6);
