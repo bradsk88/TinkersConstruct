@@ -327,7 +327,6 @@ public class TinkerTools
         addRecipesForToolBuilder();
         addRecipesForChisel();
         craftingTableRecipes();
-        setupToolTabs();
         proxy.initialize();
     }
 
@@ -336,6 +335,7 @@ public class TinkerTools
     {
         vanillaToolRecipes();
         modIntegration();
+        setupToolTabs();
     }
 
     private void addPartMapping ()

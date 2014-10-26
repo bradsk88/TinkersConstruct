@@ -39,7 +39,6 @@ public class TBaseWorldGenerator implements IWorldGenerator
         }
         else if (world.provider.terrainType != WorldType.FLAT)
         {
-            generateSurface(random, chunkX * 16, chunkZ * 16, world);
             if (world.provider.dimensionId == 0)
                 generateOreBushes(random, chunkX * 16, chunkZ * 16, world);
         }
@@ -52,53 +51,6 @@ public class TBaseWorldGenerator implements IWorldGenerator
         if (PHConstruct.worldBorder)
         {
             generateChunkBorder(random, chunkX * 16, chunkZ * 16, world);
-        }
-    }
-
-    void generateSurface (Random random, int xChunk, int zChunk, World world)
-    {
-        String biomeName = world.getWorldChunkManager().getBiomeGenAt(xChunk, zChunk).biomeName;
-
-        generateUndergroundOres(random, xChunk, zChunk, world);
-
-        if (biomeName == "Extreme Hills Edge" || biomeName == "Extreme Hills")
-        {
-            generateUndergroundOres(random, xChunk, zChunk, world);
-        }
-    }
-
-    void generateUndergroundOres (Random random, int xChunk, int zChunk, World world)
-    {
-        int xPos, yPos, zPos;
-        if (PHConstruct.generateCopper)
-        {
-            for (int q = 0; q <= PHConstruct.copperuDensity; q++)
-            {
-                xPos = xChunk + random.nextInt(16);
-                yPos = PHConstruct.copperuMinY + random.nextInt(PHConstruct.copperuMaxY - PHConstruct.copperuMinY);
-                zPos = zChunk + random.nextInt(16);
-                copper.generate(world, random, xPos, yPos, zPos);
-            }
-        }
-        if (PHConstruct.generateTin)
-        {
-            for (int q = 0; q <= PHConstruct.tinuDensity; q++)
-            {
-                xPos = xChunk + random.nextInt(16);
-                yPos = PHConstruct.tinuMinY + random.nextInt(PHConstruct.tinuMaxY - PHConstruct.tinuMinY);
-                zPos = zChunk + random.nextInt(16);
-                tin.generate(world, random, xPos, yPos, zPos);
-            }
-        }
-        if (PHConstruct.generateAluminum)
-        {
-            for (int q = 0; q <= PHConstruct.aluminumuDensity; q++)
-            {
-                xPos = xChunk + random.nextInt(16);
-                yPos = PHConstruct.aluminumuMinY + random.nextInt(PHConstruct.aluminumuMaxY - PHConstruct.aluminumuMinY);
-                zPos = zChunk + random.nextInt(16);
-                aluminum.generate(world, random, xPos, yPos, zPos);
-            }
         }
     }
 
@@ -326,16 +278,13 @@ public class TBaseWorldGenerator implements IWorldGenerator
         }
     }
 
-    WorldGenMinable copper;
-    WorldGenMinable tin;
-    WorldGenMinable aluminum;
-    WorldGenMinable cobalt;
-    WorldGenMinable ardite;
+    final WorldGenMinable cobalt;
+    final WorldGenMinable ardite;
 
-    OreberryBushGen ironBush;
-    OreberryBushGen goldBush;
-    OreberryBushGen copperBush;
-    OreberryBushGen tinBush;
-    OreberryBushGen aluminumBush;
-    OreberryBushGen silverBush;
+    final OreberryBushGen ironBush;
+    final OreberryBushGen goldBush;
+    final OreberryBushGen copperBush;
+    final OreberryBushGen tinBush;
+    final OreberryBushGen aluminumBush;
+    final OreberryBushGen silverBush;
 }

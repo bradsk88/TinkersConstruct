@@ -1,6 +1,7 @@
 package tconstruct.smeltery.blocks;
 
 import java.util.List;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.*;
@@ -9,12 +10,20 @@ import tconstruct.blocks.TConstructBlock;
 
 public class MetalOre extends TConstructBlock
 {
+    public static final int NETHER = 0;
     public static final int COBALT = 1;
 	public static final int ARDITE = 2;
+	public static final int ORE = 3;
 
-	public MetalOre(Material material, float hardness, String[] tex)
+	public static final String[] oreTypes = new String[] {
+	    "nether_slag",
+	    "nether_cobalt",
+	    "nether_ardite"
+    };
+
+	public MetalOre(Material material, float hardness)
     {
-        super(material, hardness, tex);
+        super(material, hardness, oreTypes);
     }
 
     @Override
@@ -31,7 +40,7 @@ public class MetalOre extends TConstructBlock
     @Override
     public void getSubBlocks (Item b, CreativeTabs tab, List list)
     {
-        for (int iter = 1; iter < 6; iter++)
+        for (int iter = 1; iter < oreTypes.length; iter++)
         {
             list.add(new ItemStack(b, 1, iter));
         }

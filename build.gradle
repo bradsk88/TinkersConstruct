@@ -42,6 +42,10 @@ repositories {
         name 'ForgeFS'
         url 'http://files.minecraftforge.net/maven'
     }
+	maven {
+        name 'BradJ'
+        url 'http://bradj.ca:8081/nexus/content/repositories/snapshots'
+ 	}
 }
 
 // Load ForgeGradle
@@ -67,6 +71,8 @@ dependencies {
     compile "codechicken:CodeChickenLib:${config.minecraft_version}-${config.CCLIB_version}:dev"
     compile "codechicken:CodeChickenCore:${config.minecraft_version}-${config.ccc_version}:dev"
     compile "codechicken:NotEnoughItems:${config.minecraft_version}-${config.NEI_version}:dev"
+    compile 'ca.bradj:OreCore:1.7.10-1.1.0-SNAPSHOT'
+   	compile 'ca.bradj:OreCoreExtended:1.7.10-0.1.2-SNAPSHOT'
     //compile "mcp.mobius.waila:Waila:${config.waila_version}:dev"
     deployerJars 'org.apache.maven.wagon:wagon-ssh:2.2'
 }

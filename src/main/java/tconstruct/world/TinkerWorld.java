@@ -198,13 +198,9 @@ public class TinkerWorld
         String[] berryOresTwo = new String[] { "berry_aluminum", "berry_essence", "", "", "berry_aluminum_ripe", "berry_essence_ripe", "", "" };
         TinkerWorld.oreBerrySecond = (OreberryBush) new OreberryBushEssence(berryOresTwo, 4, 2, new String[] { "oreAluminum", "oreSilver" }).setBlockName("ore.berries.two");
 
-        String[] oreTypes = new String[] { "nether_slag", "nether_cobalt", "nether_ardite", "ore_copper", "ore_tin", "ore_aluminum", "ore_slag" };
-        TinkerWorld.oreSlag = new MetalOre(Material.rock, 10.0F, oreTypes).setBlockName("tconstruct.stoneore");
-        TinkerWorld.oreSlag.setHarvestLevel("pickaxe", 4, 1);
-        TinkerWorld.oreSlag.setHarvestLevel("pickaxe", 4, 2);
-        TinkerWorld.oreSlag.setHarvestLevel("pickaxe", 1, 3);
-        TinkerWorld.oreSlag.setHarvestLevel("pickaxe", 1, 4);
-        TinkerWorld.oreSlag.setHarvestLevel("pickaxe", 1, 5);
+        TinkerWorld.oreSlag = new MetalOre(Material.rock, 10.0F).setBlockName("tconstruct.stoneore");
+        TinkerWorld.oreSlag.setHarvestLevel("pickaxe", 4, TMetalBlock.COBALT);
+        TinkerWorld.oreSlag.setHarvestLevel("pickaxe", 4, TMetalBlock.ARDITE);
 
         TinkerWorld.oreCobaltGravel = new CobaltGravelOre().setBlockName("GravelOre").setBlockName("tconstruct.gravelore");
         TinkerWorld.oreCobaltGravel.setHarvestLevel("shovel", 0, 0);
