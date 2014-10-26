@@ -867,17 +867,17 @@ public class TinkerTools
         else
             pb.registerMaterialSet("Bone", new ItemStack(Items.dye, 1, 15), new ItemStack(Items.bone), 5);
         pb.registerFullMaterial(Blocks.obsidian, 2, "Obsidian", new ItemStack(TinkerTools.toolShard, 1, 6), new ItemStack(TinkerTools.toolRod, 1, 6), 6);
-        pb.registerMaterial(new ItemStack(materials, 1, 18), 2, "Obsidian");
+        pb.registerMaterial(new ItemStack(OreCoreExtendedItems.obsidianIngot, 1), 2, "Obsidian");
         if (PHConstruct.enableTNetherrack)
             pb.registerFullMaterial(Blocks.netherrack, 2, "Netherrack", new ItemStack(TinkerTools.toolShard, 1, 7), new ItemStack(TinkerTools.toolRod, 1, 7), 7);
         else
             pb.registerMaterialSet("Netherrack", new ItemStack(TinkerTools.toolShard, 1, 7), new ItemStack(TinkerTools.toolRod, 1, 7), 7);
         if (PHConstruct.enableTSlime)
-            pb.registerFullMaterial(new ItemStack(materials, 1, 1), 2, "Slime", new ItemStack(toolShard, 1, 8), new ItemStack(toolRod, 1, 8), 8);
+            pb.registerFullMaterial(new ItemStack(materials, 1, MaterialItem.SLIME_CRYSTAL), 2, "Slime", new ItemStack(toolShard, 1, 8), new ItemStack(toolRod, 1, 8), 8);
         else
             pb.registerMaterialSet("Slime", new ItemStack(TinkerTools.toolShard, 1, 8), new ItemStack(TinkerTools.toolRod, 1, 17), 8);
         if (PHConstruct.enableTPaper)
-            pb.registerFullMaterial(new ItemStack(materials, 1, 0), 2, "Paper", new ItemStack(Items.paper, 2), new ItemStack(toolRod, 1, 9), 9);
+            pb.registerFullMaterial(new ItemStack(materials, 1, MaterialItem.PAPER_STACK), 2, "Paper", new ItemStack(Items.paper, 2), new ItemStack(toolRod, 1, 9), 9);
         else
             pb.registerMaterialSet("Paper", new ItemStack(Items.paper, 2), new ItemStack(TinkerTools.toolRod, 1, 9), 9);
         pb.registerMaterialSet("Cobalt", new ItemStack(toolShard, 1, 10), new ItemStack(toolRod, 1, 10), 10);
@@ -888,10 +888,10 @@ public class TinkerTools
         pb.registerMaterialSet("Alumite", new ItemStack(toolShard, 1, 15), new ItemStack(toolRod, 1, 15), 15);
         pb.registerMaterialSet("Steel", new ItemStack(toolShard, 1, 16), new ItemStack(toolRod, 1, 16), 16);
         if (PHConstruct.enableTBlueSlime)
-            pb.registerFullMaterial(new ItemStack(materials, 1, 17), 2, "BlueSlime", new ItemStack(toolShard, 1, 17), new ItemStack(toolRod, 1, 17), 17);
+            pb.registerFullMaterial(new ItemStack(materials, 1, MaterialItem.BLUE_SLIME_CRYSTAL), 2, "BlueSlime", new ItemStack(toolShard, 1, 17), new ItemStack(toolRod, 1, 17), 17);
         else
-            pb.registerMaterialSet("BlueSlime", new ItemStack(TinkerTools.toolShard, 1, 17), new ItemStack(TinkerTools.toolRod, 1, 17), 17);
-        pb.registerFullMaterial(new ItemStack(materials, 1, 34), 2, "PigIron", new ItemStack(toolShard, 1, 18), new ItemStack(toolRod, 1, 18), 18);
+            pb.registerMaterialSet("BlueSlime", new ItemStack(TinkerTools.toolShard, 1, MaterialItem.BLUE_SLIME_CRYSTAL), new ItemStack(TinkerTools.toolRod, 1, 17), 17);
+        pb.registerFullMaterial(new ItemStack(materials, 1, MaterialItem.PIG_IRON_INGOT), 2, "PigIron", new ItemStack(toolShard, 1, 18), new ItemStack(toolRod, 1, 18), 18);
 
         pb.addToolPattern((IPattern) TinkerTools.woodPattern);
     }
