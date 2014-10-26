@@ -1,5 +1,6 @@
 package tconstruct.armor.items;
 
+import ca.bradj.orecore.item.OreCoreItems;
 import cpw.mods.fml.relauncher.*;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -68,6 +69,6 @@ public class TravelWings extends TravelGear
     @Override
     public ItemStack getRepairMaterial (ItemStack input)
     {
-        return new ItemStack(TinkerTools.materials, 1, 13);
+        return new ItemStack(OreCoreItems.bronzeIngot, 1);
     }
 }

@@ -20,7 +20,10 @@ public class MetalItemBlock extends MultiItemBlock
     public static final int ALUMITE = ArrayUtils.indexOf(BLOCK_TYPES, "Alumite");
     public static final int ENDER = ArrayUtils.indexOf(BLOCK_TYPES, "Ender");
     public static final int PLATINUM = ArrayUtils.indexOf(BLOCK_TYPES, "Platinum");
+    public static final int ALUBRASS = ArrayUtils.indexOf(BLOCK_TYPES, "AlBrass");
     public static final int INVAR = 0; //Apparently...
+
+
 
     public MetalItemBlock(Block b)
     {

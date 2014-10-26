@@ -1,5 +1,6 @@
 package tconstruct.tools;
 
+import ca.bradj.orecoreext.item.OreCoreExtendedItems;
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.registry.*;
@@ -34,7 +35,6 @@ import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.blocks.SoilBlock;
 import tconstruct.world.itemblocks.CraftedSoilItemBlock;
-
 import static net.minecraft.util.EnumChatFormatting.*;
 
 @ObjectHolder(TConstruct.modID)
@@ -270,11 +270,9 @@ public class TinkerTools
         TinkerTools.creativeModifier = new CreativeModifier().setUnlocalizedName("tconstruct.modifier.creative");
         GameRegistry.registerItem(TinkerTools.creativeModifier, "creativeModifier");
 
-        String[] materialStrings = { "paperStack", "greenSlimeCrystal", "searedBrick", "ingotCobalt", "ingotArdite", "ingotManyullyn", "mossBall", "lavaCrystal", "necroticBone", "ingotCopper", "ingotTin", "ingotAluminum", "rawAluminum", "ingotBronze", "ingotAluminumBrass", "ingotAlumite", "ingotSteel", "blueSlimeCrystal", "ingotObsidian", "nuggetIron", "nuggetCopper", "nuggetTin", "nuggetAluminum", "nuggetSilver", "nuggetAluminumBrass", "silkyCloth", "silkyJewel", "nuggetObsidian", "nuggetCobalt", "nuggetArdite", "nuggetManyullyn", "nuggetBronze", "nuggetAlumite", "nuggetSteel", "ingotPigIron", "nuggetPigIron", "glueball" };
-
-        for (int i = 0; i < materialStrings.length; i++)
+        for (int i = 0; i < MaterialItem.DICT_STRINGS.length; i++)
         {
-            TConstructRegistry.addItemStackToDirectory(materialStrings[i], new ItemStack(TinkerTools.materials, 1, i));
+            TConstructRegistry.addItemStackToDirectory(MaterialItem.DICT_STRINGS[i], new ItemStack(TinkerTools.materials, 1, i));
         }
 
         registerMaterials();
@@ -411,18 +409,18 @@ public class TinkerTools
         ItemStack redstoneBlock = new ItemStack(Blocks.redstone_block);
         ModifyBuilder.registerModifier(new ModRedstone(2, new ItemStack[] { redstoneItem, redstoneBlock }, new int[] { 1, 9 }));
 
-        ModifyBuilder.registerModifier(new ModInteger(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 6) }, 4, "Moss", 3, "\u00a72", StatCollector.translateToLocal("modifier.tool.moss")));
+        ModifyBuilder.registerModifier(new ModInteger(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, MaterialItem.MOSS_BALL) }, 4, "Moss", 3, "\u00a72", StatCollector.translateToLocal("modifier.tool.moss")));
         ItemStack blazePowder = new ItemStack(Items.blaze_powder);
         ModifyBuilder.registerModifier(new ModBlaze(7, new ItemStack[] { blazePowder }, new int[] { 1 }));
-        ModifyBuilder.registerModifier(new ModAutoSmelt(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 7) }, 6, "Lava", "\u00a74", StatCollector.translateToLocal("modifier.tool.lava")));
-        ModifyBuilder.registerModifier(new ModInteger(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 8) }, 8, "Necrotic", 1, "\u00a78", StatCollector.translateToLocal("modifier.tool.necro")));
+        ModifyBuilder.registerModifier(new ModAutoSmelt(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, MaterialItem.LAVA_CRYSTAL) }, 6, "Lava", "\u00a74", StatCollector.translateToLocal("modifier.tool.lava")));
+        ModifyBuilder.registerModifier(new ModInteger(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, MaterialItem.NECROTIC_BONE) }, 8, "Necrotic", 1, "\u00a78", StatCollector.translateToLocal("modifier.tool.necro")));
 
         ModifyBuilder.registerModifier(new ModExtraModifier(new ItemStack[] { diamond, new ItemStack(Blocks.gold_block) }, "Tier1Free"));
         ModifyBuilder.registerModifier(new ModExtraModifier(new ItemStack[] { new ItemStack(Blocks.diamond_block), new ItemStack(Items.golden_apple, 1, 1) }, "Tier1.5Free"));
         ModifyBuilder.registerModifier(new ModExtraModifier(new ItemStack[] { new ItemStack(Items.nether_star) }, "Tier2Free"));
         ModifyBuilder.registerModifier(new ModCreativeToolModifier(new ItemStack[] { new ItemStack(TinkerTools.creativeModifier) }));
 
-        ItemStack silkyJewel = new ItemStack(TinkerTools.materials, 1, 26);
+        ItemStack silkyJewel = new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_JEWEL);
         ModifyBuilder.registerModifier(new ModButtertouch(new ItemStack[] { silkyJewel }, 12));
 
         ItemStack piston = new ItemStack(Blocks.piston);
@@ -470,7 +468,7 @@ public class TinkerTools
         chiseling.addDetailing(Items.slime_ball, 0, TinkerTools.multiBrick, 10, TinkerTools.chisel);
         chiseling.addDetailing(TinkerWorld.strangeFood, 0, TinkerTools.multiBrick, 11, TinkerTools.chisel);
         chiseling.addDetailing(Blocks.end_stone, 0, TinkerTools.multiBrick, 12, TinkerTools.chisel);
-        chiseling.addDetailing(TinkerTools.materials, 18, TinkerTools.multiBrick, 13, TinkerTools.chisel);
+        chiseling.addDetailing(OreCoreExtendedItems.obsidianIngot, 18, TinkerTools.multiBrick, 13, TinkerTools.chisel);
 
         // adding multiBrick / multiBrickFanxy meta 0-13 to list
         for (int sc = 0; sc < 14; sc++)
@@ -619,12 +617,12 @@ public class TinkerTools
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.name_tag), "P~ ", "~O ", "  ~", '~', Items.string, 'P', Items.paper, 'O', "slimeball"));
 
         // Paperstack Recipe
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 0), "pp", "pp", 'p', Items.paper);
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.PAPER_STACK), "pp", "pp", 'p', Items.paper);
         // Mossball Recipe
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.materials, 1, 6), patBlock, '#', "stoneMossy"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.MOSS_BALL), patBlock, '#', "stoneMossy"));
         // LavaCrystal Recipes -Auto-smelt
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 7), "xcx", "cbc", "xcx", 'b', Items.lava_bucket, 'c', Items.fire_charge, 'x', Items.blaze_rod);
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 7), "xcx", "cbc", "xcx", 'b', Items.lava_bucket, 'x', Items.fire_charge, 'c', Items.blaze_rod);
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.LAVA_CRYSTAL), "xcx", "cbc", "xcx", 'b', Items.lava_bucket, 'c', Items.fire_charge, 'x', Items.blaze_rod);
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.LAVA_CRYSTAL), "xcx", "cbc", "xcx", 'b', Items.lava_bucket, 'x', Items.fire_charge, 'c', Items.blaze_rod);
         // Slimy sand Recipes
         GameRegistry.addShapelessRecipe(new ItemStack(TinkerTools.craftedSoil, 1, 0), Items.slime_ball, Items.slime_ball, Items.slime_ball, Items.slime_ball, Blocks.sand, Blocks.dirt);
         GameRegistry.addShapelessRecipe(new ItemStack(TinkerTools.craftedSoil, 1, 2), TinkerWorld.strangeFood, TinkerWorld.strangeFood, TinkerWorld.strangeFood, TinkerWorld.strangeFood, Blocks.sand, Blocks.dirt);
@@ -635,10 +633,10 @@ public class TinkerTools
         // Graveyard Soil Recipes
         GameRegistry.addShapelessRecipe(new ItemStack(TinkerTools.craftedSoil, 1, 3), Blocks.dirt, Items.rotten_flesh, new ItemStack(Items.dye, 1, 15));
         // Silky Cloth Recipes
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 25), patSurround, 'm', new ItemStack(TinkerTools.materials, 1, 24), '#', new ItemStack(Items.string));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.materials, 1, 25), patSurround, 'm', "nuggetGold", '#', new ItemStack(Items.string)));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_CLOTH), patSurround, 'm', new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUBRASS_NUGGET), '#', new ItemStack(Items.string));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_CLOTH), patSurround, 'm', "nuggetGold", '#', new ItemStack(Items.string)));
         // Silky Jewel Recipes
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 26), " c ", "cec", " c ", 'c', new ItemStack(TinkerTools.materials, 1, 25), 'e', new ItemStack(Items.emerald));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_JEWEL), " c ", "cec", " c ", 'c', new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_CLOTH), 'e', new ItemStack(Items.emerald));
 
         // Advanced WorkBench Recipes
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.craftingStationWood, 1, 0), "b", 'b', "crafterWood"));
@@ -659,8 +657,8 @@ public class TinkerTools
         GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 13));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 5), "b", 'b', new ItemStack(TinkerTools.toolForge, 1, Short.MAX_VALUE));
 
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 41), "dustArdite", "dustCobalt"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 4, 42), "dustAluminium", "dustAluminium", "dustAluminium", "dustCopper"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_DUST), "dustArdite", "dustCobalt"));
+        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 4, MaterialItem.ALUBRASS_DUST), "dustAluminium", "dustAluminium", "dustAluminium", "dustCopper"));
     }
 
     private void modIntegration ()
@@ -794,8 +792,8 @@ public class TinkerTools
         TConstructRegistry.addBowstringMaterial(0, 2, new ItemStack(Items.string), new ItemStack(TinkerTools.bowstring, 1, 0), 1F, 1F, 1f, 0xeeeeee); // String
         TConstructRegistry.addFletchingMaterial(0, 2, new ItemStack(Items.feather), new ItemStack(TinkerTools.fletching, 1, 0), 100F, 0F, 0.05F, 0xffffff); // Feather
         TConstructRegistry.addCustomMaterial(new FletchlingLeafMaterial(1, 2, "treeLeaves", new ItemStack(TinkerTools.fletching, 1, 1), 75F, 0F, 0.2F)); // all vanilla and oredicted leaves. and all leaves in general.
-        TConstructRegistry.addFletchingMaterial(2, 2, new ItemStack(TinkerTools.materials, 1, 1), new ItemStack(TinkerTools.fletching, 1, 2), 100F, 0F, 0.12F, 0x82c873); // Slime
-        TConstructRegistry.addFletchingMaterial(3, 2, new ItemStack(TinkerTools.materials, 1, 17), new ItemStack(TinkerTools.fletching, 1, 3), 100F, 0F, 0.12F, 0x74c8c7); // BlueSlime
+        TConstructRegistry.addFletchingMaterial(2, 2, new ItemStack(TinkerTools.materials, 1, MaterialItem.SLIME_CRYSTAL), new ItemStack(TinkerTools.fletching, 1, 2), 100F, 0F, 0.12F, 0x82c873); // Slime
+        TConstructRegistry.addFletchingMaterial(3, 2, new ItemStack(TinkerTools.materials, 1, MaterialItem.BLUE_SLIME_CRYSTAL), new ItemStack(TinkerTools.fletching, 1, 3), 100F, 0F, 0.12F, 0x74c8c7); // BlueSlime
 
         // Register all the materials for default toolparts
         TConstructRegistry.addDefaultToolPartMaterial(MaterialID.Wood);

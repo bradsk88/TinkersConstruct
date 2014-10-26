@@ -930,7 +930,7 @@ public class TinkerSmeltery {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerSmeltery.glassPane, 16, 0), "GGG", "GGG", 'G', TinkerSmeltery.clearGlass));
 
         // Smeltery Components Recipes
-        ItemStack searedBrick = new ItemStack(TinkerTools.materials, 1, 2);
+        ItemStack searedBrick = new ItemStack(TinkerTools.materials, 1, MaterialItem.SEARED_BRICK);
         GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.smeltery, 1, 0), "bbb", "b b", "bbb", 'b', searedBrick); // Controller
         GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.smeltery, 1, 1), "b b", "b b", "b b", 'b', searedBrick); // Drain
         GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.smeltery, 1, 2), "bb", "bb", 'b', searedBrick); // Bricks
@@ -1073,7 +1073,7 @@ public class TinkerSmeltery {
         tableCasting.addCastingRecipe(gemcast, new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2), new ItemStack(Items.emerald), CAST_DELAY);
 
         // Ingots
-        tableCasting.addCastingRecipe(new ItemStack(TinkerTools.materials, 1, 2), new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4), ingotcast, CAST_DELAY); // stone
+        tableCasting.addCastingRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.SEARED_BRICK), new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4), ingotcast, CAST_DELAY); // stone
 
         // Misc
         tableCasting.addCastingRecipe(new ItemStack(Items.emerald), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, EMERALD_FLUID_REQ), gemcast, CAST_DELAY);
@@ -1142,7 +1142,7 @@ public class TinkerSmeltery {
         tableCasting.addCastingRecipe(new ItemStack(Items.ender_pearl), new FluidStack(TinkerSmeltery.moltenEnderFluid, ENDER_PEARL_FLUID_REQ),
                 new ItemStack(TinkerSmeltery.metalPattern, 1, MetalPattern.GEM), METAL_MELT_DELAY);
 
-        ItemStack[] ingotShapes = { new ItemStack(Items.brick), new ItemStack(Items.netherbrick), new ItemStack(TinkerTools.materials, 1, 2),
+        ItemStack[] ingotShapes = { new ItemStack(Items.brick), new ItemStack(Items.netherbrick), new ItemStack(TinkerTools.materials, 1, MaterialItem.SEARED_BRICK),
                 new ItemStack(TinkerTools.materials, 1, MaterialItem.SEARED_BRICK) };
         for (int i = 0; i < ingotShapes.length; i++) {
             tableCasting.addCastingRecipe(ingotcast, new FluidStack(TinkerSmeltery.moltenAlubrassFluid, TConstruct.ingotLiquidValue), ingotShapes[i],

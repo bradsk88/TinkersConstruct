@@ -4,7 +4,9 @@ import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.*;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+
 import java.util.List;
+
 import net.minecraft.entity.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
@@ -24,6 +26,7 @@ import tconstruct.armor.player.TPlayerStats;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.event.*;
 import tconstruct.library.tools.*;
+import tconstruct.tools.items.MaterialItem;
 import tconstruct.util.ItemHelper;
 import tconstruct.util.config.PHConstruct;
 
@@ -180,7 +183,7 @@ public class TinkerToolEvents
             thaum++;
 
         // each part gives 0.5 modifiers, rounded up
-        int bonusModifiers = (int) Math.ceil((double) thaum / 2d);
+        int bonusModifiers = (int) Math.ceil(thaum / 2d);
 
         // 2-part tools get 1 modifier per part
         if (tool.getPartAmount() == 2)
@@ -333,7 +336,7 @@ public class TinkerToolEvents
                 }
                 if (enemy.getSkeletonType() == 1 && TConstruct.random.nextInt(Math.max(1, 5 - event.lootingLevel)) == 0)
                 {
-                    ItemHelper.addDrops(event, new ItemStack(TinkerTools.materials, 1, 8));
+                    ItemHelper.addDrops(event, new ItemStack(TinkerTools.materials, 1, MaterialItem.NECROTIC_BONE));
                 }
             }
 

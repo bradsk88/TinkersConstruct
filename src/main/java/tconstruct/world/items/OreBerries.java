@@ -1,7 +1,11 @@
 package tconstruct.world.items;
 
 import cpw.mods.fml.relauncher.*;
+
 import java.util.List;
+
+import org.apache.commons.lang3.ArrayUtils;
+
 import mantle.items.abstracts.CraftingItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -13,15 +17,17 @@ import tconstruct.library.TConstructRegistry;
 
 public class OreBerries extends CraftingItem
 {
-    public static final int IRON = 0;
-    public static final int GOLD = 1;
-    public static final int COPPER = 2;
-    public static final int TIN = 3;
-    public static final int ALUMINUM= 4;
-    public static final int ESSENCE= 5;
-    
-	static String[] names = new String[] { "iron", "gold", "copper", "tin", "aluminum", "essence" };
+
+    static String[] names = new String[] { "iron", "gold", "copper", "tin", "aluminum", "essence" };
     static String[] tex = new String[] { "oreberry_iron", "oreberry_gold", "oreberry_copper", "oreberry_tin", "oreberry_aluminum", "oreberry_essence" };
+
+    public static final int IRON = ArrayUtils.indexOf(names, "iron");
+    public static final int GOLD = ArrayUtils.indexOf(names, "gold");
+    public static final int COPPER = ArrayUtils.indexOf(names, "copper");
+    public static final int TIN = ArrayUtils.indexOf(names, "tin");
+    public static final int ALUMINUM= ArrayUtils.indexOf(names, "aluminum");
+    public static final int ESSENCE= ArrayUtils.indexOf(names, "essence");
+    public static final int SILVER = ArrayUtils.indexOf(names, "iron");
 
     public OreBerries()
     {

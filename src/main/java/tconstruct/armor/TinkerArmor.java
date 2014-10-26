@@ -32,6 +32,7 @@ import tconstruct.modifiers.armor.*;
 import tconstruct.modifiers.tools.ModAttack;
 import tconstruct.modifiers.tools.ModInteger;
 import tconstruct.tools.TinkerTools;
+import tconstruct.tools.items.MaterialItem;
 import tconstruct.world.TinkerWorld;
 
 @ObjectHolder(TConstruct.modID)
@@ -178,7 +179,7 @@ public class TinkerArmor
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerArmor.heartCanister, 1, 0), " # ", "#B#", " # ", '#', "ingotTin", 'B', Items.bone));
 
         GameRegistry.addRecipe(new ItemStack(TinkerArmor.diamondApple), " d ", "d#d", " d ", 'd', new ItemStack(Items.diamond), '#', new ItemStack(Items.apple));
-        GameRegistry.addShapelessRecipe(new ItemStack(TinkerArmor.heartCanister, 1, 2), new ItemStack(TinkerArmor.diamondApple), new ItemStack(TinkerTools.materials, 1, 8), new ItemStack(TinkerArmor.heartCanister, 1, 0), new ItemStack(TinkerArmor.heartCanister, 1, 1));
+        GameRegistry.addShapelessRecipe(new ItemStack(TinkerArmor.heartCanister, 1, 2), new ItemStack(TinkerArmor.diamondApple), new ItemStack(TinkerTools.materials, 1, MaterialItem.NECROTIC_BONE), new ItemStack(TinkerArmor.heartCanister, 1, 0), new ItemStack(TinkerArmor.heartCanister, 1, 1));
         GameRegistry.addShapelessRecipe(new ItemStack(TinkerArmor.heartCanister, 1, 1), new ItemStack(TinkerArmor.heartCanister, 1, 3));
         GameRegistry.addShapelessRecipe(new ItemStack(TinkerArmor.heartCanister, 1, 4), new ItemStack(TinkerArmor.heartCanister, 1, 2), new ItemStack(TinkerArmor.heartCanister, 1, 3), new ItemStack(Items.golden_apple, 1, 1));
         //GameRegistry.addShapelessRecipe(new ItemStack(heartCanister, 1, 6), new ItemStack(heartCanister, 1, 0), new ItemStack(heartCanister, 1, 4), new ItemStack(heartCanister, 1, 5));
@@ -226,7 +227,7 @@ public class TinkerArmor
         //MultiType
         ModifyBuilder.registerModifier(new TravelModDoubleJump(EnumSet.of(ArmorPart.Legs, ArmorPart.Feet), new ItemStack[] { new ItemStack(Items.ghast_tear), new ItemStack(TinkerWorld.slimeGel, 1, 0), new ItemStack(Blocks.piston) }));
         ModifyBuilder.registerModifier(new TravelModDoubleJump(EnumSet.of(ArmorPart.Legs, ArmorPart.Feet), new ItemStack[] { new ItemStack(Items.ghast_tear), new ItemStack(TinkerWorld.slimeGel, 1, 1), new ItemStack(Blocks.piston) }));
-        ModifyBuilder.registerModifier(new AModInteger(4, "Moss", EnumSet.of(ArmorPart.Legs, ArmorPart.Feet, ArmorPart.Chest, ArmorPart.Head), new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 6) }, 3, "\u00a72", StatCollector.translateToLocal("modifier.tool.moss")));
+        ModifyBuilder.registerModifier(new AModInteger(4, "Moss", EnumSet.of(ArmorPart.Legs, ArmorPart.Feet, ArmorPart.Chest, ArmorPart.Head), new ItemStack[] { new ItemStack(TinkerTools.materials, 1, MaterialItem.MOSS_BALL) }, 3, "\u00a72", StatCollector.translateToLocal("modifier.tool.moss")));
         ModifyBuilder.registerModifier(new TravelModRepair());
         TConstructRegistry.registerActiveArmorMod(new ActiveTinkerArmor());
 

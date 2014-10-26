@@ -85,6 +85,7 @@ import tconstruct.world.items.GoldenHead;
 import tconstruct.world.items.OreBerries;
 import tconstruct.world.items.StrangeFood;
 import ca.bradj.orecore.item.OreCoreItems;
+import ca.bradj.orecore.item.OreCoreItems.OreCoreRegistration;
 import ca.bradj.orecoreext.item.OreCoreExtendedItems;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
@@ -339,59 +340,47 @@ public class TinkerWorld
         String[] patSurround = { "###", "#m#", "###" };
 
         // Metal conversion Recipes
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 3), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 9)); // Copper
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 5), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 10)); // Tin
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 6), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 11)); // Aluminum
-        // GameRegistry.addRecipe(new ItemStack(TRepo.metalBlock, 1, 6),
-        // patBlock, '#', new ItemStack(TRepo.materials, 1, 12)); // Aluminum
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 4), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 13)); // Bronze
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 7), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 14)); // AluBrass
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 0), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 3)); // Cobalt
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 1), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 4)); // Ardite
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 2), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 5)); // Manyullyn
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 8), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 15)); // Alumite
-        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, 9), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 16)); // Steel
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 11), "#", '#', new ItemStack(TinkerTools.materials, 1, 12)); // Aluminum raw ->
-        // ingot
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ALUBRASS), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUBRASS_INGOT));
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.COBALT), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.COBALT_INGOT));
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ARDITE), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_INGOT));
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.MANYULLYN), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_INGOT));
+        GameRegistry.addRecipe(new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ALUMITE), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUMITE_INGOT));
 
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 9), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 3)); // Copper
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 10), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 5)); // Tin
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 11), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 6)); // Aluminum
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 13), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 4)); // Bronze
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 14), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 7)); // AluBrass
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 3), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 0)); // Cobalt
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 4), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 1)); // Ardite
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 5), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 2)); // Manyullyn
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 15), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 8)); // Alumite
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 16), "m", 'm', new ItemStack(TinkerWorld.metalBlock, 1, 9)); // Steel
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ALUBRASS_INGOT), "m", 'm',
+                new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ALUBRASS));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.COBALT_INGOT), "m", 'm',
+                new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.COBALT));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ARDITE_INGOT), "m", 'm',
+                new ItemStack(TinkerWorld.metalBlock, 1, MetalItemBlock.ARDITE));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.MANYULLYN_INGOT), "m", 'm',
+                new ItemStack(TinkerWorld.metalBlock, 1, MaterialItem.MANYULLYN_INGOT));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ALUMITE_INGOT), "m", 'm',
+                new ItemStack(TinkerWorld.metalBlock, 1, MaterialItem.ALUMITE_INGOT));
 
-        GameRegistry.addRecipe(new ItemStack(Items.iron_ingot), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 19)); // Iron
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 9), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 20)); // Copper
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 10), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 21)); // Tin
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 11), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 22)); // Aluminum
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 14), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 24)); // Aluminum Brass
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 18), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 27)); // Obsidian
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 3), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 28)); // Cobalt
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 4), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 29)); // Ardite
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 5), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 30)); // Manyullyn
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 13), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 31)); // Bronze
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 15), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 32)); // Alumite
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, 16), patBlock, '#', new ItemStack(TinkerTools.materials, 1, 33)); // Steel
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.COBALT_INGOT), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 9, MaterialItem.COBALT_NUGGET)); // Cobalt
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_INGOT), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_NUGGET)); // Ardite
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_INGOT), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_NUGGET)); // Manyullyn
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUMITE_INGOT), patBlock, '#',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUMITE_NUGGET)); // Alumite
 
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 19), "m", 'm', new ItemStack(Items.iron_ingot)); // Iron
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 20), "m", 'm', new ItemStack(TinkerTools.materials, 1, 9)); // Copper
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 21), "m", 'm', new ItemStack(TinkerTools.materials, 1, 10)); // Tin
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 22), "m", 'm', new ItemStack(TinkerTools.materials, 1, 11)); // Aluminum
-        // GameRegistry.addRecipe(new ItemStack(TRepo.materials, 9, 22), "m",
-        // 'm', new ItemStack(TRepo.materials, 1, 12)); //Aluminum
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 24), "m", 'm', new ItemStack(TinkerTools.materials, 1, 14)); // Aluminum Brass
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 27), "m", 'm', new ItemStack(TinkerTools.materials, 1, 18)); // Obsidian
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 28), "m", 'm', new ItemStack(TinkerTools.materials, 1, 3)); // Cobalt
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 29), "m", 'm', new ItemStack(TinkerTools.materials, 1, 4)); // Ardite
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 30), "m", 'm', new ItemStack(TinkerTools.materials, 1, 5)); // Manyullyn
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 31), "m", 'm', new ItemStack(TinkerTools.materials, 1, 13)); // Bronze
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 32), "m", 'm', new ItemStack(TinkerTools.materials, 1, 15)); // Alumite
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, 33), "m", 'm', new ItemStack(TinkerTools.materials, 1, 16)); // Steel
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ALUBRASS_NUGGET), "m", 'm',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUBRASS_INGOT)); // Aluminum Brass
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.COBALT_NUGGET), "m", 'm',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.COBALT_INGOT)); // Cobalt
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ARDITE_NUGGET), "m", 'm',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_INGOT)); // Ardite
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.MANYULLYN_NUGGET), "m", 'm',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_INGOT)); // Manyullyn
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.materials, 9, MaterialItem.ALUMITE_NUGGET), "m", 'm',
+                new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUMITE_INGOT)); // Alumite
 
         String[] dyeTypes = { "dyeBlack", "dyeRed", "dyeGreen", "dyeBrown", "dyeBlue", "dyePurple", "dyeCyan", "dyeLightGray", "dyeGray", "dyePink", "dyeLime", "dyeYellow", "dyeLightBlue", "dyeMagenta", "dyeOrange", "dyeWhite" };
         String color = "";
@@ -413,7 +402,7 @@ public class TinkerWorld
         GameRegistry.addRecipe(new ItemStack(TinkerTools.toolRod, 4, 1), "c", "c", 'c', new ItemStack(Blocks.stone));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.toolRod, 2, 1), "c", "c", 'c', new ItemStack(Blocks.cobblestone));
         //
-        ItemStack aluBrass = new ItemStack(TinkerTools.materials, 1, 14);
+        ItemStack aluBrass = new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUBRASS_INGOT);
         // Clock Recipe - Vanilla alternativ
         GameRegistry.addRecipe(new ItemStack(Items.clock), " i ", "iri", " i ", 'i', aluBrass, 'r', new ItemStack(Items.redstone));
         // Gold Pressure Plate - Vanilla alternativ
@@ -464,19 +453,11 @@ public class TinkerWorld
         FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 3), new ItemStack(TinkerTools.craftedSoil, 1, 4), 0.2f); // Concecrated
         // Soil
 
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 0), new ItemStack(TinkerTools.materials, 1, 1), 2f); // Slime
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 1), new ItemStack(TinkerTools.materials, 1, 2), 2f); // Seared brick item
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 2), new ItemStack(TinkerTools.materials, 1, 17), 2f); // Blue Slime
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 6), new ItemStack(TinkerTools.materials, 1, 37), 2f); // Nether seared
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 0), new ItemStack(TinkerTools.materials, 1, MaterialItem.SLIME_CRYSTAL), 2f); // Slime
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 1), new ItemStack(TinkerTools.materials, 1, MaterialItem.SEARED_BRICK), 2f); // Seared brick item
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 2), new ItemStack(TinkerTools.materials, 1, MaterialItem.BLUE_SLIME_CRYSTAL), 2f); // Blue Slime
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.craftedSoil, 1, 6), new ItemStack(TinkerTools.materials, 1, MaterialItem.SEARED_BRICK), 2f); // Nether seared
         // brick
-
-        // FurnaceRecipes.smelting().func_151394_a(new ItemStack(TRepo.oreSlag,
-        // 1, new ItemStack(TRepo.materials, 1, 3), 3f);
-        // FurnaceRecipes.smelting().func_151394_a(new ItemStack(TRepo.oreSlag,
-        // 2, new ItemStack(TRepo.materials, 1, 4), 3f);
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerWorld.oreSlag, 1, 3), new ItemStack(TinkerTools.materials, 1, 9), 0.5f);
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerWorld.oreSlag, 1, 4), new ItemStack(TinkerTools.materials, 1, 10), 0.5f);
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerWorld.oreSlag, 1, 5), new ItemStack(TinkerTools.materials, 1, 11), 0.5f);
 
         FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerWorld.oreBerries, 1, OreBerries.IRON), new ItemStack(OreCoreItems.ironNugget, 1), 0.2f);
         FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerWorld.oreBerries, 1, OreBerries.GOLD), new ItemStack(Items.gold_nugget, 1), 0.2f);
@@ -488,9 +469,9 @@ public class TinkerWorld
         // 0.2f);
 
         FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerSmeltery.speedBlock, 1, 0), new ItemStack(TinkerSmeltery.speedBlock, 1, 2), 0.2f);
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.materials, 1, 38), new ItemStack(TinkerTools.materials, 1, 4), 0.2f);
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.materials, 1, 39), new ItemStack(TinkerTools.materials, 1, 3), 0.2f);
-        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.materials, 1, 41), new ItemStack(TinkerTools.materials, 1, 5), 0.2f);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_DUST), new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_INGOT), 0.2f);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.materials, 1, MaterialItem.COBALT_DUST), new ItemStack(TinkerTools.materials, 1, MaterialItem.COBALT_INGOT), 0.2f);
+        FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_DUST), new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_INGOT), 0.2f);
 
     }
 

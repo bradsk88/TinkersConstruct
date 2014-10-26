@@ -1,31 +1,32 @@
 package tconstruct.world.gen;
 
 import cpw.mods.fml.common.IWorldGenerator;
+
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.*;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import tconstruct.smeltery.itemblocks.MetalItemBlock;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
+import tconstruct.world.itemblocks.MetalOreItemBlock;
+import tconstruct.world.items.OreBerries;
 
 public class TBaseWorldGenerator implements IWorldGenerator
 {
     public TBaseWorldGenerator()
     {
-        copper = new WorldGenMinable(TinkerWorld.oreSlag, 3, 8, Blocks.stone);
-        tin = new WorldGenMinable(TinkerWorld.oreSlag, 4, 8, Blocks.stone);
-        aluminum = new WorldGenMinable(TinkerWorld.oreSlag, 5, 6, Blocks.stone);
+        cobalt = new WorldGenMinable(TinkerWorld.oreSlag, 1, MetalItemBlock.COBALT, Blocks.netherrack);
+        ardite = new WorldGenMinable(TinkerWorld.oreSlag, 2, MetalItemBlock.ARDITE, Blocks.netherrack);
 
-        cobalt = new WorldGenMinable(TinkerWorld.oreSlag, 1, 3, Blocks.netherrack);
-        ardite = new WorldGenMinable(TinkerWorld.oreSlag, 2, 3, Blocks.netherrack);
-
-        ironBush = new OreberryBushGen(TinkerWorld.oreBerry, 12, 12);
-        goldBush = new OreberryBushGen(TinkerWorld.oreBerry, 13, 6);
-        copperBush = new OreberryBushGen(TinkerWorld.oreBerry, 14, 12);
-        tinBush = new OreberryBushGen(TinkerWorld.oreBerry, 15, 12);
+        ironBush = new OreberryBushGen(TinkerWorld.oreBerry, OreBerries.IRON, 12);
+        goldBush = new OreberryBushGen(TinkerWorld.oreBerry, OreBerries.GOLD, 6);
+        copperBush = new OreberryBushGen(TinkerWorld.oreBerry, OreBerries.COPPER, 12);
+        tinBush = new OreberryBushGen(TinkerWorld.oreBerry, OreBerries.TIN, 12);
         aluminumBush = new OreberryBushGen(TinkerWorld.oreBerrySecond, 12, 14);
         silverBush = new OreberryBushGen(TinkerWorld.oreBerrySecond, 13, 8);
     }

@@ -1,12 +1,14 @@
 package tconstruct.plugins.mfr;
 
 import java.util.*;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import powercrystals.minefactoryreloaded.api.*;
 import tconstruct.tools.TinkerTools;
+import tconstruct.tools.items.MaterialItem;
 
 public class GrindableHorse implements IFactoryGrindable
 {
@@ -21,7 +23,7 @@ public class GrindableHorse implements IFactoryGrindable
     {
         List<MobDrop> drops = new ArrayList<MobDrop>();
 
-        drops.add(new MobDrop(10, new ItemStack(TinkerTools.materials, random.nextInt(4) + 1, 36)));
+        drops.add(new MobDrop(10, new ItemStack(TinkerTools.materials, random.nextInt(4) + 1, MaterialItem.GLUE_BALL)));
 
         return drops;
     }

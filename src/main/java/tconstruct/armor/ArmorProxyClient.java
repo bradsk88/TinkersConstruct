@@ -1,9 +1,12 @@
 package tconstruct.armor;
 
 import com.google.common.collect.Lists;
+
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+
 import java.util.*;
+
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -34,6 +37,7 @@ import tconstruct.library.accessory.IAccessoryModel;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.ModifyBuilder;
 import tconstruct.tools.TinkerTools;
+import tconstruct.tools.items.MaterialItem;
 import tconstruct.world.TinkerWorld;
 
 public class ArmorProxyClient extends ArmorProxyCommon
@@ -106,7 +110,7 @@ public class ArmorProxyClient extends ArmorProxyCommon
         TConstructClientRegistry.registerManualModifier("gloveknuckles", gloves.copy(), new ItemStack(Items.quartz), new ItemStack(Blocks.quartz_block, 1, Short.MAX_VALUE));
 
         // moss
-        ItemStack moss = new ItemStack(TinkerTools.materials, 1, 6);
+        ItemStack moss = new ItemStack(TinkerTools.materials, 1, MaterialItem.MOSS_BALL);
         TConstructClientRegistry.registerManualModifier("mossgoggles", goggles.copy(), moss.copy());
         TConstructClientRegistry.registerManualModifier("mossvest", vest.copy(), moss.copy());
         TConstructClientRegistry.registerManualModifier("mosswings", wings.copy(), moss.copy());
@@ -242,7 +246,7 @@ public class ArmorProxyClient extends ArmorProxyCommon
                 int healthRows = MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F / 10.0F);
                 int rowHeight = Math.max(10 - (healthRows - 2), 3);
 
-                this.rand.setSeed((long) (updateCounter * 312871));
+                this.rand.setSeed(updateCounter * 312871);
 
                 int left = scaledWidth / 2 - 91;
                 int top = scaledHeight - GuiIngameForge.left_height;
@@ -271,7 +275,7 @@ public class ArmorProxyClient extends ArmorProxyCommon
                 for (int i = MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F) - 1; i >= 0; --i)
                 {
                     int b0 = (highlight ? 1 : 0);
-                    int row = MathHelper.ceiling_float_int((float) (i + 1) / 10.0F) - 1;
+                    int row = MathHelper.ceiling_float_int((i + 1) / 10.0F) - 1;
                     int x = left + i % 10 * 8;
                     int y = top - row * rowHeight;
 
@@ -359,10 +363,10 @@ public class ArmorProxyClient extends ArmorProxyCommon
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV((double) (par1 + 0), (double) (par2 + par6), (double) this.zLevel, (double) ((float) (par3 + 0) * f), (double) ((float) (par4 + par6) * f1));
-        tessellator.addVertexWithUV((double) (par1 + par5), (double) (par2 + par6), (double) this.zLevel, (double) ((float) (par3 + par5) * f), (double) ((float) (par4 + par6) * f1));
-        tessellator.addVertexWithUV((double) (par1 + par5), (double) (par2 + 0), (double) this.zLevel, (double) ((float) (par3 + par5) * f), (double) ((float) (par4 + 0) * f1));
-        tessellator.addVertexWithUV((double) (par1 + 0), (double) (par2 + 0), (double) this.zLevel, (double) ((float) (par3 + 0) * f), (double) ((float) (par4 + 0) * f1));
+        tessellator.addVertexWithUV(par1 + 0, par2 + par6, this.zLevel, (par3 + 0) * f, (par4 + par6) * f1);
+        tessellator.addVertexWithUV(par1 + par5, par2 + par6, this.zLevel, (par3 + par5) * f, (par4 + par6) * f1);
+        tessellator.addVertexWithUV(par1 + par5, par2 + 0, this.zLevel, (par3 + par5) * f, (par4 + 0) * f1);
+        tessellator.addVertexWithUV(par1 + 0, par2 + 0, this.zLevel, (par3 + 0) * f, (par4 + 0) * f1);
         tessellator.draw();
     }
 
@@ -505,7 +509,7 @@ public class ArmorProxyClient extends ArmorProxyCommon
 
     protected float handleRotationFloat (EntityLivingBase par1EntityLivingBase, float par2)
     {
-        return (float) par1EntityLivingBase.ticksExisted + par2;
+        return par1EntityLivingBase.ticksExisted + par2;
     }
 
 }

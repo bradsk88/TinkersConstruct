@@ -1,5 +1,7 @@
 package tconstruct.tools;
 
+import ca.bradj.orecore.item.OreCoreItems;
+import ca.bradj.orecoreext.item.OreCoreExtendedItems;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import mantle.client.MProxyClient;
@@ -25,9 +27,9 @@ import tconstruct.library.tools.ToolCore;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.entity.*;
 import tconstruct.tools.gui.*;
+import tconstruct.tools.items.MaterialItem;
 import tconstruct.tools.logic.*;
 import tconstruct.tools.model.*;
-
 import static tconstruct.tools.TinkerTools.*;
 
 public class ToolProxyClient extends ToolProxyCommon
@@ -148,20 +150,20 @@ public class ToolProxyClient extends ToolProxyCommon
         MantleClientRegistry.registerManualIcon("stenciltable", new ItemStack(TinkerTools.toolStationWood, 1, 10));
 
         //TODO: Untwine this
-        MantleClientRegistry.registerManualIcon("blueslimecrystal", new ItemStack(TinkerTools.materials, 1, 17));
-        MantleClientRegistry.registerManualIcon("slimecrystal", new ItemStack(TinkerTools.materials, 1, 1));
-        MantleClientRegistry.registerManualIcon("paperstack", new ItemStack(TinkerTools.materials, 1, 0));
-        MantleClientRegistry.registerManualIcon("cobaltingot", new ItemStack(TinkerTools.materials, 1, 3));
-        MantleClientRegistry.registerManualIcon("arditeingot", new ItemStack(TinkerTools.materials, 1, 4));
-        MantleClientRegistry.registerManualIcon("copperingot", new ItemStack(TinkerTools.materials, 1, 9));
-        MantleClientRegistry.registerManualIcon("steelingot", new ItemStack(TinkerTools.materials, 1, 16));
-        MantleClientRegistry.registerManualIcon("pigironingot", new ItemStack(TinkerTools.materials, 1, 34));
-        MantleClientRegistry.registerManualIcon("obsidianingot", new ItemStack(TinkerTools.materials, 1, 18));
-        MantleClientRegistry.registerManualIcon("lavacrystal", new ItemStack(TinkerTools.materials, 1, 7));
-        MantleClientRegistry.registerManualIcon("bronzeingot", new ItemStack(TinkerTools.materials, 1, 13));
-        MantleClientRegistry.registerManualIcon("alubrassingot", new ItemStack(TinkerTools.materials, 1, 14));
-        MantleClientRegistry.registerManualIcon("manyullyningot", new ItemStack(TinkerTools.materials, 1, 5));
-        MantleClientRegistry.registerManualIcon("alumiteingot", new ItemStack(TinkerTools.materials, 1, 15));
+        MantleClientRegistry.registerManualIcon("blueslimecrystal", new ItemStack(TinkerTools.materials, 1, MaterialItem.BLUE_SLIME_CRYSTAL));
+        MantleClientRegistry.registerManualIcon("slimecrystal", new ItemStack(TinkerTools.materials, 1, MaterialItem.SLIME_CRYSTAL));
+        MantleClientRegistry.registerManualIcon("paperstack", new ItemStack(TinkerTools.materials, 1, MaterialItem.PAPER_STACK));
+        MantleClientRegistry.registerManualIcon("cobaltingot", new ItemStack(TinkerTools.materials, 1, MaterialItem.COBALT_INGOT));
+        MantleClientRegistry.registerManualIcon("arditeingot", new ItemStack(TinkerTools.materials, 1, MaterialItem.ARDITE_INGOT));
+        MantleClientRegistry.registerManualIcon("copperingot", new ItemStack(OreCoreItems.copperIngot));
+        MantleClientRegistry.registerManualIcon("steelingot", new ItemStack(OreCoreItems.steelIngot));
+        MantleClientRegistry.registerManualIcon("pigironingot", new ItemStack(TinkerTools.materials, 1, MaterialItem.PIG_IRON_INGOT));
+        MantleClientRegistry.registerManualIcon("obsidianingot", new ItemStack(OreCoreExtendedItems.obsidianIngot));
+        MantleClientRegistry.registerManualIcon("lavacrystal", new ItemStack(TinkerTools.materials, 1, MaterialItem.LAVA_CRYSTAL));
+        MantleClientRegistry.registerManualIcon("bronzeingot", new ItemStack(OreCoreItems.bronzeIngot));
+        MantleClientRegistry.registerManualIcon("alubrassingot", new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUBRASS_INGOT));
+        MantleClientRegistry.registerManualIcon("manyullyningot", new ItemStack(TinkerTools.materials, 1, MaterialItem.MANYULLYN_INGOT));
+        MantleClientRegistry.registerManualIcon("alumiteingot", new ItemStack(TinkerTools.materials, 1, MaterialItem.ALUMITE_INGOT));
 
         MProxyClient.registerManualPage("materialstats", MaterialPage.class);
         MProxyClient.registerManualPage("toolpage", ToolPage.class);
@@ -172,7 +174,7 @@ public class ToolProxyClient extends ToolProxyCommon
     {
 
         ItemStack pattern = new ItemStack(TinkerTools.blankPattern, 1, 0);
-        ItemStack silkyCloth = new ItemStack(TinkerTools.materials, 1, 25);
+        ItemStack silkyCloth = new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_CLOTH);
 
         ItemStack stick = new ItemStack(Items.stick, 1, 0);
         ItemStack paper = new ItemStack(Items.paper);
@@ -204,12 +206,12 @@ public class ToolProxyClient extends ToolProxyCommon
         MantleClientRegistry.registerManualLargeRecipe("toolforge", new ItemStack(TinkerTools.toolForge, 1, 0), searedbrickBlock, searedbrickBlock, searedbrickBlock, ironblock, new ItemStack(TinkerTools.toolStationWood, 1, 0), ironblock, ironblock, null, ironblock); //TODO: Alternate recipe for Smeltery disabled
 
         MantleClientRegistry.registerManualLargeRecipe("slimymud", slimyMud, null, slimeball, slimeball, null, slimeball, slimeball, null, dirt, sand);
-        MantleClientRegistry.registerManualFurnaceRecipe("slimecrystal", new ItemStack(TinkerTools.materials, 1, 1), slimyMud);
-        MantleClientRegistry.registerManualSmallRecipe("paperstack", new ItemStack(TinkerTools.materials, 1, 0), paper, paper, paper, paper);
-        MantleClientRegistry.registerManualLargeRecipe("mossball", new ItemStack(TinkerTools.materials, 1, 6), mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble);
-        MantleClientRegistry.registerManualLargeRecipe("lavacrystal", new ItemStack(TinkerTools.materials, 1, 7), blazerod, firecharge, blazerod, firecharge, new ItemStack(Items.lava_bucket), firecharge, blazerod, firecharge, blazerod);
-        MantleClientRegistry.registerManualLargeRecipe("silkycloth", silkyCloth, string, string, string, string, new ItemStack(TinkerTools.materials, 1, 24), string, string, string, string);
-        MantleClientRegistry.registerManualLargeRecipe("silkyjewel", new ItemStack(TinkerTools.materials, 1, 26), null, silkyCloth, null, silkyCloth, new ItemStack(Items.emerald), silkyCloth, null, silkyCloth, null);
+        MantleClientRegistry.registerManualFurnaceRecipe("slimecrystal", new ItemStack(TinkerTools.materials, 1, MaterialItem.SLIME_CRYSTAL), slimyMud);
+        MantleClientRegistry.registerManualSmallRecipe("paperstack", new ItemStack(TinkerTools.materials, 1, MaterialItem.PAPER_STACK), paper, paper, paper, paper);
+        MantleClientRegistry.registerManualLargeRecipe("mossball", new ItemStack(TinkerTools.materials, 1, MaterialItem.MOSS_BALL), mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble, mossycobble);
+        MantleClientRegistry.registerManualLargeRecipe("lavacrystal", new ItemStack(TinkerTools.materials, 1, MaterialItem.LAVA_CRYSTAL), blazerod, firecharge, blazerod, firecharge, new ItemStack(Items.lava_bucket), firecharge, blazerod, firecharge, blazerod);
+        MantleClientRegistry.registerManualLargeRecipe("silkycloth", silkyCloth, string, string, string, string, new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_CLOTH), string, string, string, string);
+        MantleClientRegistry.registerManualLargeRecipe("silkyjewel", new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_JEWEL), null, silkyCloth, null, silkyCloth, new ItemStack(Items.emerald), silkyCloth, null, silkyCloth, null);
 
         // Modifier recipes
         ItemStack ironpick = ToolBuilder.instance.buildTool(new ItemStack(TinkerTools.pickaxeHead, 1, 6), new ItemStack(TinkerTools.toolRod, 1, 2), new ItemStack(TinkerTools.binding, 1, 6), "");
@@ -220,13 +222,13 @@ public class ToolProxyClient extends ToolProxyCommon
         TConstructClientRegistry.registerManualModifier("diamondmod", ironpick.copy(), new ItemStack(Items.diamond));
         TConstructClientRegistry.registerManualModifier("emeraldmod", ironpick.copy(), new ItemStack(Items.emerald));
         TConstructClientRegistry.registerManualModifier("redstonemod", ironpick.copy(), new ItemStack(Items.redstone), new ItemStack(Blocks.redstone_block));
-        TConstructClientRegistry.registerManualModifier("lavacrystalmod", ironpick.copy(), new ItemStack(TinkerTools.materials, 1, 7));
+        TConstructClientRegistry.registerManualModifier("lavacrystalmod", ironpick.copy(), new ItemStack(TinkerTools.materials, 1, MaterialItem.LAVA_CRYSTAL));
         TConstructClientRegistry.registerManualModifier("lapismod", ironpick.copy(), new ItemStack(Items.dye, 1, 4), new ItemStack(Blocks.lapis_block));
-        TConstructClientRegistry.registerManualModifier("mossmod", ironpick.copy(), new ItemStack(TinkerTools.materials, 1, 6));
+        TConstructClientRegistry.registerManualModifier("mossmod", ironpick.copy(), new ItemStack(TinkerTools.materials, 1, MaterialItem.MOSS_BALL));
         TConstructClientRegistry.registerManualModifier("quartzmod", ironlongsword.copy(), new ItemStack(Items.quartz), new ItemStack(Blocks.quartz_block));
         TConstructClientRegistry.registerManualModifier("blazemod", ironlongsword.copy(), new ItemStack(Items.blaze_powder));
-        TConstructClientRegistry.registerManualModifier("necroticmod", ironlongsword.copy(), new ItemStack(TinkerTools.materials, 1, 8));
-        TConstructClientRegistry.registerManualModifier("silkymod", ironpick.copy(), new ItemStack(TinkerTools.materials, 1, 26));
+        TConstructClientRegistry.registerManualModifier("necroticmod", ironlongsword.copy(), new ItemStack(TinkerTools.materials, 1, MaterialItem.NECROTIC_BONE));
+        TConstructClientRegistry.registerManualModifier("silkymod", ironpick.copy(), new ItemStack(TinkerTools.materials, 1, MaterialItem.SILKY_JEWEL));
         TConstructClientRegistry.registerManualModifier("reinforcedmod", ironpick.copy(), new ItemStack(TinkerTools.largePlate, 1, 6));
 
         TConstructClientRegistry.registerManualModifier("pistonmod", ironlongsword.copy(), new ItemStack(Blocks.piston));
@@ -246,7 +248,7 @@ public class ToolProxyClient extends ToolProxyCommon
         TConstructClientRegistry.registerManualSmeltery("clearglass", new ItemStack(TinkerSmeltery.clearGlass), new ItemStack(TinkerSmeltery.moltenGlass, 1), null);
         TConstructClientRegistry.registerManualSmeltery("searedstone", new ItemStack(TinkerSmeltery.smeltery, 1, 4), new ItemStack(TinkerSmeltery.moltenStone, 1), null);
         TConstructClientRegistry.registerManualSmeltery("endstone", new ItemStack(Blocks.end_stone), new ItemStack(TinkerSmeltery.moltenEnder, 1), new ItemStack(Blocks.obsidian));
-        TConstructClientRegistry.registerManualSmeltery("glueball", new ItemStack(TinkerTools.materials, 1, 36), new ItemStack(TinkerSmeltery.glueFluidBlock, 1), null);
+        TConstructClientRegistry.registerManualSmeltery("glueball", new ItemStack(TinkerTools.materials, 1, MaterialItem.GLUE_BALL), new ItemStack(TinkerSmeltery.glueFluidBlock, 1), null);
     }
 
     @Override

@@ -15,6 +15,11 @@ public class MaterialItem extends CraftingItem
         "nugget_cobalt", "nugget_ardite", "nugget_manyullyn", "nugget_alumite", "pigironingot", "nugget_pigiron",
         "glueball", "searedbrick_nether", "ardite_dust", "cobalt_dust", "manyullyn_dust", "alubrass_dust" };
 
+    public static final String[] DICT_STRINGS = { "paperStack", "greenSlimeCrystal", "searedBrick",
+        "ingotCobalt", "ingotArdite", "ingotManyullyn", "mossBall", "lavaCrystal", "necroticBone",
+        "ingotAluminumBrass", "ingotAlumite", "blueSlimeCrystal", "nuggetAluminumBrass", "silkyCloth", "silkyJewel",
+        "nuggetCobalt", "nuggetArdite", "nuggetManyullyn", "nuggetAlumite", "ingotPigIron", "nuggetPigIron",
+        "glueball", "searedBrick", "dustArdite", "dustCobalt", "dustManyullyn", "dustAluminumBrass" };
 
     private static final String[] materialNames = new String[] { "PaperStack", "SlimeCrystal", "SearedBrick",
         "CobaltIngot", "ArditeIngot", "ManyullynIngot", "Mossball", "LavaCrystal", "NecroticBone",
@@ -39,7 +44,15 @@ public class MaterialItem extends CraftingItem
     public static final int COBALT_DUST = ArrayUtils.indexOf(craftingTextures, "cobalt_dust");
     public static final int MANYULLYN_DUST = ArrayUtils.indexOf(craftingTextures, "manyullyn_dust");
     public static final int ALUBRASS_DUST = ArrayUtils.indexOf(craftingTextures, "alubrass_dust");
-
+    public static final int ALUBRASS_NUGGET = ArrayUtils.indexOf(craftingTextures, "nugget_alubrass");
+    public static final int NECROTIC_BONE = ArrayUtils.indexOf(craftingTextures, "necroticbone");
+    public static final int MOSS_BALL = ArrayUtils.indexOf(craftingTextures, "mossball");
+    public static final int PAPER_STACK = ArrayUtils.indexOf(craftingTextures, "paperstack");
+    public static final int LAVA_CRYSTAL = ArrayUtils.indexOf(craftingTextures, "lavacrystal");
+    public static final int SILKY_CLOTH = ArrayUtils.indexOf(craftingTextures, "silkycloth");
+    public static final int SILKY_JEWEL = ArrayUtils.indexOf(craftingTextures, "silkyjewel");
+    public static final int SLIME_CRYSTAL = ArrayUtils.indexOf(craftingTextures, "slimecrystal");
+    public static final int BLUE_SLIME_CRYSTAL = ArrayUtils.indexOf(craftingTextures, "blueslimecrystal");
 
     public MaterialItem()
     {
