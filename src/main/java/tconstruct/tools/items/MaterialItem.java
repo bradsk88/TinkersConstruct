@@ -53,6 +53,7 @@ public class MaterialItem extends CraftingItem
     public static final int SILKY_JEWEL = ArrayUtils.indexOf(craftingTextures, "silkyjewel");
     public static final int SLIME_CRYSTAL = ArrayUtils.indexOf(craftingTextures, "slimecrystal");
     public static final int BLUE_SLIME_CRYSTAL = ArrayUtils.indexOf(craftingTextures, "blueslimecrystal");
+    public static final int SEARED_BRICK_NETHER = ArrayUtils.indexOf(craftingTextures, "searedbrick_nether");
 
     public MaterialItem()
     {

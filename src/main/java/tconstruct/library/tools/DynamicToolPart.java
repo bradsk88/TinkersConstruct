@@ -3,6 +3,7 @@ package tconstruct.library.tools;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mantle.items.abstracts.CraftingItem;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -137,6 +138,7 @@ public class DynamicToolPart extends CraftingItem implements IToolPart
         this.defaultIcon = iconRegister.registerIcon(modTexPrefix + ":" + folder + texture);
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage (int meta)
     {
@@ -160,4 +162,9 @@ public class DynamicToolPart extends CraftingItem implements IToolPart
 
         return super.getColorFromItemStack(stack, renderpass);
     }
+
+    public String getPartName() {
+        return partName;
+    }
+
 }

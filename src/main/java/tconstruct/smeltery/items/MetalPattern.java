@@ -1,6 +1,10 @@
 package tconstruct.smeltery.items;
 
 import java.util.List;
+
+import com.google.common.base.Optional;
+
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.*;
 import tconstruct.tools.items.Pattern;
@@ -43,4 +47,10 @@ public class MetalPattern extends Pattern
             if (!(PATTERN_NAME[i].equals("")))
                 p_150895_3_.add(new ItemStack(p_150895_1_, 1, i));
     }
+
+    public static Optional<Item> getOutputByName(String name) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

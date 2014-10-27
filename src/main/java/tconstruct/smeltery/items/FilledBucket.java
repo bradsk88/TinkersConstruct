@@ -1,7 +1,11 @@
 package tconstruct.smeltery.items;
 
 import cpw.mods.fml.relauncher.*;
+
 import java.util.List;
+
+import org.apache.commons.lang3.ArrayUtils;
+
 import mantle.world.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -182,36 +186,40 @@ public class FilledBucket extends ItemBucket
 
     public static final String[] materialNames = new String[] { "Iron", "Gold", "Copper", "Tin", "Aluminum", "Cobalt", "Ardite", "Bronze", "AluBrass", "Manyullyn", "Alumite", "Obsidian", "Steel", "Glass", "Stone", "Villager", "Cow", "Nickel", "Lead", "Silver", "Shiny", "Invar", "Electrum", "Ender", "Slime", "Glue", "PigIron" };
 
-    public static final String[] textureNames = new String[] { "iron", "gold", "copper", "tin", "aluminum", "cobalt", "ardite", "bronze", "alubrass", "manyullyn", "alumite", "obsidian", "steel", "glass", "stone", "emerald", "blood", "nickel", "lead", "silver", "shiny", "invar", "electrum", "ender", "slime", "glue", "pigiron" };
+    public static final String[] textureNames = new String[] {
+        "iron", "gold", "copper", "tin", "aluminum",
+        "cobalt", "ardite", "bronze", "alubrass", "manyullyn",
+        "alumite", "obsidian", "steel", "glass", "stone",
+        "emerald", "blood", "nickel", "lead", "silver",
+        "shiny", "invar", "electrum", "ender", "slime",
+        "glue", "pigiron" };
 
-    public static final int IRON = 0;
-    public static final int GOLD = 1;
-    public static final int COPPER = 2;
-    public static final int TIN = 3;
-    public static final int ALUMINUM = 4;
-    public static final int COBALT = 5;
-    public static final int ARDITE = 6;
-    public static final int BRONZE = 7;
-    public static final int ALUBRASS = 8;
-
-    public static final int MANYULLYN = 9;
-    public static final int ALUMITE = 10;
-    public static final int OBSIDIAN = 11;
-    public static final int STEEL = 12;
-    public static final int GLASS = 13;
-    public static final int STONE = 14;
-    public static final int EMERALD = 15;
-    public static final int BLOOD = 16;
-    public static final int NICKEL = 17;
-    public static final int LEAD = 18;
-    public static final int SILVER = 19;
-    public static final int SHINY = 20;
-    public static final int INVAR = 21;
-    public static final int ELECTRUM = 22;
-    public static final int ENDER = 23;
-    public static final int GLUE = 25;
-    public static final int PIG_IRON = 26;
-
-
+    public static final int IRON = ArrayUtils.indexOf(textureNames, "iron");
+    public static final int GOLD = ArrayUtils.indexOf(textureNames, "gold");
+    public static final int COPPER = ArrayUtils.indexOf(textureNames, "copper");
+    public static final int TIN = ArrayUtils.indexOf(textureNames, "tin");
+    public static final int ALUMINUM = ArrayUtils.indexOf(textureNames, "aluminum");
+    public static final int COBALT = ArrayUtils.indexOf(textureNames, "cobalt");
+    public static final int ARDITE = ArrayUtils.indexOf(textureNames, "ardite");
+    public static final int BRONZE = ArrayUtils.indexOf(textureNames, "bronze");
+    public static final int ALUBRASS = ArrayUtils.indexOf(textureNames, "alubrass");
+    public static final int MANYULLYN = ArrayUtils.indexOf(textureNames, "manyullyn");
+    public static final int ALUMITE = ArrayUtils.indexOf(textureNames, "alumite");
+    public static final int OBSIDIAN = ArrayUtils.indexOf(textureNames, "obsidian");
+    public static final int STEEL = ArrayUtils.indexOf(textureNames, "steel");
+    public static final int GLASS = ArrayUtils.indexOf(textureNames, "glass");
+    public static final int STONE = ArrayUtils.indexOf(textureNames, "stone");
+    public static final int EMERALD = ArrayUtils.indexOf(textureNames, "emerald");
+    public static final int BLOOD = ArrayUtils.indexOf(textureNames, "blood");
+    public static final int NICKEL = ArrayUtils.indexOf(textureNames, "nickel");
+    public static final int LEAD = ArrayUtils.indexOf(textureNames, "lead");
+    public static final int SILVER = ArrayUtils.indexOf(textureNames, "silver");
+    public static final int SHINY = ArrayUtils.indexOf(textureNames, "shiny");
+    public static final int INVAR = ArrayUtils.indexOf(textureNames, "invar");
+    public static final int ELECTRUM = ArrayUtils.indexOf(textureNames, "electrum");
+    public static final int ENDER = ArrayUtils.indexOf(textureNames, "ender");
+    public static final int GLUE = ArrayUtils.indexOf(textureNames, "glue");
+    public static final int SLIME = ArrayUtils.indexOf(textureNames, "slime");
+    public static final int PIG_IRON = ArrayUtils.indexOf(textureNames, "pigiron");
 
 }

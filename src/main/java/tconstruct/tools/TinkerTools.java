@@ -1,5 +1,9 @@
 package tconstruct.tools;
 
+import java.util.Map;
+
+import com.google.common.collect.ImmutableMap;
+
 import ca.bradj.orecoreext.item.OreCoreExtendedItems;
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.event.*;
@@ -41,6 +45,37 @@ import static net.minecraft.util.EnumChatFormatting.*;
 @Pulse(id = "Tinkers' Tools", description = "The main core of the mod! All of the tools, the tables, and the patterns are here.")
 public class TinkerTools
 {
+    public static final String INGOT_NAME = "Ingot";
+    public static final String TOOL_ROD_NAME = "ToolRod";
+    public static final String PICKAXE_HEAD_NAME = "PickaxeHead";
+    public static final String AXE_HEAD_NAME = "AxeHead";
+    public static final String SHOVEL_HEAD_NAME = "ShovelHead";
+    public static final String HATCHET_HEAD_NAME = "HatchetHead";
+    public static final String SWORD_BLADE_NAME = "SwordBlade";
+    public static final String WIDE_GUARD_NAME = "WideGuard";
+    public static final String HAND_GUARD_NAME = "HandGuard";
+    public static final String CROSS_BAR_NAME = "CrossBar";
+    public static final String BINDING_NAME = "Binding";
+    public static final String FRY_PAN_HEAD = "FryPan";
+    public static final String SIGN_HEAD_NAME = "SignHead";
+    public static final String KNIFE_BLADE_NAME = "KnifeBlade";
+    public static final String CHISEL_HEAD_NAME = "ChiselHead";
+    public static final String TOUGH_ROD_NAME = "ToughRod";
+    public static final String TOUGH_BINDING_NAME = "ToughBinding";
+    public static final String LARGE_PLATE_NAME = "LargePlate";
+    public static final String BROAD_AXE_HEAD_NAME = "BroadAxeHead";
+    public static final String SCYTHE_BLADE_NAME = "ScytheBlade";
+    public static final String EXCAVATOR_HEAD_NAME = "ExcavatorHead";
+    public static final String LARGE_SWORD_BLADE_NAME = "LargeSwordBlade";
+    public static final String HAMMER_HEAD_NAME = "HammerHead";
+    public static final String FULL_GUARD_NAME = "FullGuard";
+    public static final String ARROW_HEAD_NAME = "ArrowHead";
+    public static final String LARGE_GUARD_NAME = "LargeGuard";
+    public static final String MEDIUM_GUARD_NAME = "MediumGuard";
+    public static final String LARGE_ROD_NAME = "LargeRod";
+    public static final String BOW_STRING_NAME = "BowString";
+    public static final String FLETCHING_NAME = "Fletching";
+
     /* Proxies for sides, used for graphics processing */
     @SidedProxy(clientSide = "tconstruct.tools.ToolProxyClient", serverSide = "tconstruct.tools.ToolProxyCommon")
     public static ToolProxyCommon proxy;
@@ -56,29 +91,29 @@ public class TinkerTools
     public static Block battlesignBlock;
 
     // Tool parts
-    public static Item binding;
-    public static Item toughBinding;
-    public static Item toughRod;
-    public static Item largePlate;
-    public static Item pickaxeHead;
-    public static Item shovelHead;
-    public static Item hatchetHead;
-    public static Item frypanHead;
-    public static Item signHead;
-    public static Item chiselHead;
-    public static Item scytheBlade;
-    public static Item broadAxeHead;
-    public static Item excavatorHead;
-    public static Item hammerHead;
-    public static Item swordBlade;
-    public static Item largeSwordBlade;
-    public static Item knifeBlade;
-    public static Item wideGuard;
+    public static DynamicToolPart binding;
+    public static DynamicToolPart toughBinding;
+    public static DynamicToolPart toughRod;
+    public static DynamicToolPart largePlate;
+    public static DynamicToolPart pickaxeHead;
+    public static DynamicToolPart shovelHead;
+    public static DynamicToolPart hatchetHead;
+    public static DynamicToolPart frypanHead;
+    public static DynamicToolPart signHead;
+    public static DynamicToolPart chiselHead;
+    public static DynamicToolPart scytheBlade;
+    public static DynamicToolPart broadAxeHead;
+    public static DynamicToolPart excavatorHead;
+    public static DynamicToolPart hammerHead;
+    public static DynamicToolPart swordBlade;
+    public static DynamicToolPart largeSwordBlade;
+    public static DynamicToolPart knifeBlade;
+    public static DynamicToolPart wideGuard;
 
     // Patterns and other materials
     public static Item blankPattern;
     public static Item materials; //TODO: Untwine this item
-    public static Item toolRod;
+    public static DynamicToolPart toolRod;
     public static Item toolShard;
     public static Item titleIcon;
 
@@ -103,11 +138,11 @@ public class TinkerTools
     public static ToolCore shortbow;
     public static ToolCore arrow;
     public static Item potionLauncher;
-    public static Item handGuard;
-    public static Item crossbar;
-    public static Item fullGuard;
+    public static DynamicToolPart handGuard;
+    public static DynamicToolPart crossbar;
+    public static DynamicToolPart fullGuard;
     public static Item bowstring;
-    public static Item arrowhead;
+    public static DynamicToolPart arrowhead;
     public static Item fletching;
     public static Block craftedSoil; //TODO: Untwine this
     public static Block multiBrick;
@@ -116,8 +151,8 @@ public class TinkerTools
     public static ModFlux modFlux;
     public static ModLapis modLapis;
     public static ModAttack modAttack;
-    public static Item[] patternOutputs;
-    public static Item woodPattern;
+    public static Map<String, DynamicToolPart> patternOutputs;
+    public static Pattern woodPattern;
     public static Item manualBook;
     public static ToolCore excavator;
     public static Item creativeModifier;
@@ -175,7 +210,7 @@ public class TinkerTools
         TinkerTools.materials = new MaterialItem().setUnlocalizedName("tconstruct.Materials");
         TinkerTools.toolRod = new DynamicToolPart("_rod", "ToolRod");
         TinkerTools.toolShard = new ToolShard("_chunk", "ToolShard");
-        TinkerTools.woodPattern = new Pattern("pattern_", "materials/").setUnlocalizedName("tconstruct.Pattern");
+        TinkerTools.woodPattern = (Pattern) new Pattern("pattern_", "materials/").setUnlocalizedName("tconstruct.Pattern");
         GameRegistry.registerItem(TinkerTools.materials, "materials");
         GameRegistry.registerItem(TinkerTools.woodPattern, "woodPattern");
         TConstructRegistry.addItemToDirectory("blankPattern", TinkerTools.blankPattern);
@@ -275,12 +310,38 @@ public class TinkerTools
             TConstructRegistry.addItemStackToDirectory(MaterialItem.DICT_STRINGS[i], new ItemStack(TinkerTools.materials, 1, i));
         }
 
-        registerMaterials();
 
         registerStencils();
 
         // this array is only used to register the remaining pattern-part-interactions
-        TinkerTools.patternOutputs = new Item[] { TinkerTools.toolRod, TinkerTools.pickaxeHead, TinkerTools.shovelHead, TinkerTools.hatchetHead, TinkerTools.swordBlade, TinkerTools.wideGuard, TinkerTools.handGuard, TinkerTools.crossbar, TinkerTools.binding, TinkerTools.frypanHead, TinkerTools.signHead, TinkerTools.knifeBlade, TinkerTools.chiselHead, TinkerTools.toughRod, TinkerTools.toughBinding, TinkerTools.largePlate, TinkerTools.broadAxeHead, TinkerTools.scytheBlade, TinkerTools.excavatorHead, TinkerTools.largeSwordBlade, TinkerTools.hammerHead, TinkerTools.fullGuard, null, null, TinkerTools.arrowhead, null };
+
+
+        ImmutableMap.Builder<String, DynamicToolPart> partsBuild = ImmutableMap.builder();
+        partsBuild.put(TinkerTools.TOOL_ROD_NAME, TinkerTools.toolRod);
+        partsBuild.put(TinkerTools.PICKAXE_HEAD_NAME, TinkerTools.pickaxeHead);
+        partsBuild.put(TinkerTools.SHOVEL_HEAD_NAME, TinkerTools.shovelHead);
+        partsBuild.put(TinkerTools.HATCHET_HEAD_NAME, TinkerTools.hatchetHead);
+        partsBuild.put(TinkerTools.SWORD_BLADE_NAME, TinkerTools.swordBlade);
+        partsBuild.put(TinkerTools.WIDE_GUARD_NAME, TinkerTools.wideGuard);
+        partsBuild.put(TinkerTools.HAND_GUARD_NAME, TinkerTools.handGuard);
+        partsBuild.put(TinkerTools.CROSS_BAR_NAME, TinkerTools.crossbar);
+        partsBuild.put(TinkerTools.BINDING_NAME, TinkerTools.binding);
+        partsBuild.put(TinkerTools.FRY_PAN_HEAD, TinkerTools.frypanHead);
+        partsBuild.put(TinkerTools.SIGN_HEAD_NAME, TinkerTools.signHead);
+        partsBuild.put(TinkerTools.KNIFE_BLADE_NAME, TinkerTools.knifeBlade);
+        partsBuild.put(TinkerTools.CHISEL_HEAD_NAME, TinkerTools.chiselHead);
+        partsBuild.put(TinkerTools.TOUGH_ROD_NAME, TinkerTools.toughRod);
+        partsBuild.put(TinkerTools.TOUGH_BINDING_NAME, TinkerTools.toughBinding);
+        partsBuild.put(TinkerTools.LARGE_PLATE_NAME, TinkerTools.largePlate);
+        partsBuild.put(TinkerTools.BROAD_AXE_HEAD_NAME, TinkerTools.broadAxeHead);
+        partsBuild.put(TinkerTools.SCYTHE_BLADE_NAME, TinkerTools.scytheBlade);
+        partsBuild.put(TinkerTools.EXCAVATOR_HEAD_NAME, TinkerTools.excavatorHead);
+        partsBuild.put(TinkerTools.LARGE_SWORD_BLADE_NAME, TinkerTools.largeSwordBlade);
+        partsBuild.put(TinkerTools.HAMMER_HEAD_NAME, TinkerTools.hammerHead);
+        partsBuild.put(TinkerTools.FULL_GUARD_NAME, TinkerTools.fullGuard);
+        partsBuild.put(TinkerTools.ARROW_HEAD_NAME, TinkerTools.arrowhead);
+
+        TinkerTools.patternOutputs = partsBuild.build();
 
         //Moved temporarily to deal with AE2 Quartz
         TinkerTools.modFlux = new ModFlux();
@@ -323,6 +384,7 @@ public class TinkerTools
     @Handler
     public void init (FMLInitializationEvent event)
     {
+        registerMaterials();
         addPartMapping();
         addRecipesForToolBuilder();
         addRecipesForChisel();
@@ -346,6 +408,13 @@ public class TinkerTools
 
         if (PHConstruct.craftMetalTools)
         {
+            for (DynamicToolPart i : TinkerTools.patternOutputs.values()) {
+                for (String mat : TinkerTools.materialNames) {
+                    if (PHConstruct.craftMetalTools) {
+                        TConstructRegistry.addPartMapping(woodPattern.getPatternByName(i.getPartName()), 0, mat, new ItemStack(i.getByMaterialName(mat), 1));
+                    }
+                }
+            }
             for (int mat = 0; mat < 18; mat++)
             {
                 for (int meta = 0; meta < TinkerTools.patternOutputs.length; meta++)
@@ -375,30 +444,29 @@ public class TinkerTools
 
     private void addRecipesForToolBuilder ()
     {
-        ToolBuilder tb = ToolBuilder.instance;
-        tb.addNormalToolRecipe(TinkerTools.pickaxe, TinkerTools.pickaxeHead, TinkerTools.toolRod, TinkerTools.binding);
-        tb.addNormalToolRecipe(TinkerTools.broadsword, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.wideGuard);
-        tb.addNormalToolRecipe(TinkerTools.hatchet, TinkerTools.hatchetHead, TinkerTools.toolRod);
-        tb.addNormalToolRecipe(TinkerTools.shovel, TinkerTools.shovelHead, TinkerTools.toolRod);
-        tb.addNormalToolRecipe(TinkerTools.longsword, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.handGuard);
-        tb.addNormalToolRecipe(TinkerTools.rapier, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.crossbar);
-        tb.addNormalToolRecipe(TinkerTools.frypan, TinkerTools.frypanHead, TinkerTools.toolRod);
-        tb.addNormalToolRecipe(TinkerTools.battlesign, TinkerTools.signHead, TinkerTools.toolRod);
-        tb.addNormalToolRecipe(TinkerTools.mattock, TinkerTools.hatchetHead, TinkerTools.toolRod, TinkerTools.shovelHead);
-        tb.addNormalToolRecipe(TinkerTools.dagger, TinkerTools.knifeBlade, TinkerTools.toolRod, TinkerTools.crossbar);
-        tb.addNormalToolRecipe(TinkerTools.cutlass, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.fullGuard);
-        tb.addNormalToolRecipe(TinkerTools.chisel, TinkerTools.chiselHead, TinkerTools.toolRod);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.pickaxe, TinkerTools.pickaxeHead, TinkerTools.toolRod, TinkerTools.binding);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.broadsword, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.wideGuard);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.hatchet, TinkerTools.hatchetHead, TinkerTools.toolRod);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.shovel, TinkerTools.shovelHead, TinkerTools.toolRod);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.longsword, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.handGuard);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.rapier, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.crossbar);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.frypan, TinkerTools.frypanHead, TinkerTools.toolRod);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.battlesign, TinkerTools.signHead, TinkerTools.toolRod);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.mattock, TinkerTools.hatchetHead, TinkerTools.toolRod, TinkerTools.shovelHead);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.dagger, TinkerTools.knifeBlade, TinkerTools.toolRod, TinkerTools.crossbar);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.cutlass, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.fullGuard);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.chisel, TinkerTools.chiselHead, TinkerTools.toolRod);
 
-        tb.addNormalToolRecipe(TinkerTools.scythe, TinkerTools.scytheBlade, TinkerTools.toughRod, TinkerTools.toughBinding, TinkerTools.toughRod);
-        tb.addNormalToolRecipe(TinkerTools.lumberaxe, TinkerTools.broadAxeHead, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.toughBinding);
-        tb.addNormalToolRecipe(TinkerTools.cleaver, TinkerTools.largeSwordBlade, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.toughRod);
-        tb.addNormalToolRecipe(TinkerTools.excavator, TinkerTools.excavatorHead, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.toughBinding);
-        tb.addNormalToolRecipe(TinkerTools.hammer, TinkerTools.hammerHead, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.largePlate);
-        tb.addNormalToolRecipe(TinkerTools.battleaxe, TinkerTools.broadAxeHead, TinkerTools.toughRod, TinkerTools.broadAxeHead, TinkerTools.toughBinding);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.scythe, TinkerTools.scytheBlade, TinkerTools.toughRod, TinkerTools.toughBinding, TinkerTools.toughRod);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.lumberaxe, TinkerTools.broadAxeHead, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.toughBinding);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.cleaver, TinkerTools.largeSwordBlade, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.toughRod);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.excavator, TinkerTools.excavatorHead, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.toughBinding);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.hammer, TinkerTools.hammerHead, TinkerTools.toughRod, TinkerTools.largePlate, TinkerTools.largePlate);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.battleaxe, TinkerTools.broadAxeHead, TinkerTools.toughRod, TinkerTools.broadAxeHead, TinkerTools.toughBinding);
 
         BowRecipe recipe = new BowRecipe(TinkerTools.toolRod, TinkerTools.bowstring, TinkerTools.toolRod, TinkerTools.shortbow);
-        tb.addCustomToolRecipe(recipe);
-        tb.addNormalToolRecipe(TinkerTools.arrow, TinkerTools.arrowhead, TinkerTools.toolRod, TinkerTools.fletching);
+        ToolBuilder.addCustomToolRecipe(recipe);
+        ToolBuilder.addNormalToolRecipe(TinkerTools.arrow, TinkerTools.arrowhead, TinkerTools.toolRod, TinkerTools.fletching);
 
         ItemStack diamond = new ItemStack(Items.diamond);
         ModifyBuilder.registerModifier(new ModToolRepair());
@@ -459,8 +527,8 @@ public class TinkerTools
         // TRepo.chisel);
         // chiseling.addDetailing(Block.stone_refined, 0, TRepo.multiBrick, 3,
         // TRepo.chisel);
-        chiseling.addDetailing(Items.iron_ingot, 0, TinkerTools.multiBrick, 4, TinkerTools.chisel);
-        chiseling.addDetailing(Items.gold_ingot, 0, TinkerTools.multiBrick, 5, TinkerTools.chisel);
+        chiseling.addDetailing(Items.iron_ingot, 0, TinkerTools.multiBrick, MultiBrick.IRON, TinkerTools.chisel);
+        chiseling.addDetailing(Items.gold_ingot, 0, TinkerTools.multiBrick, MultiBrick.GOLD, TinkerTools.chisel);
         chiseling.addDetailing(Items.dye, 4, TinkerTools.multiBrick, 6, TinkerTools.chisel);
         chiseling.addDetailing(Items.diamond, 0, TinkerTools.multiBrick, 7, TinkerTools.chisel);
         chiseling.addDetailing(Items.redstone, 0, TinkerTools.multiBrick, 8, TinkerTools.chisel);
@@ -468,8 +536,8 @@ public class TinkerTools
         chiseling.addDetailing(Items.slime_ball, 0, TinkerTools.multiBrick, 10, TinkerTools.chisel);
         chiseling.addDetailing(TinkerWorld.strangeFood, 0, TinkerTools.multiBrick, 11, TinkerTools.chisel);
         chiseling.addDetailing(Blocks.end_stone, 0, TinkerTools.multiBrick, 12, TinkerTools.chisel);
-        chiseling.addDetailing(OreCoreExtendedItems.obsidianIngot, 18, TinkerTools.multiBrick, 13, TinkerTools.chisel);
 
+        chiseling.addDetailing(OreCoreExtendedItems.obsidianIngot, 0, TinkerTools.multiBrick, MultiBrick.OBSIDIAN, TinkerTools.chisel);
         // adding multiBrick / multiBrickFanxy meta 0-13 to list
         for (int sc = 0; sc < 14; sc++)
         {
@@ -893,7 +961,7 @@ public class TinkerTools
             pb.registerMaterialSet("BlueSlime", new ItemStack(TinkerTools.toolShard, 1, MaterialItem.BLUE_SLIME_CRYSTAL), new ItemStack(TinkerTools.toolRod, 1, 17), 17);
         pb.registerFullMaterial(new ItemStack(materials, 1, MaterialItem.PIG_IRON_INGOT), 2, "PigIron", new ItemStack(toolShard, 1, 18), new ItemStack(toolRod, 1, 18), 18);
 
-        pb.addToolPattern((IPattern) TinkerTools.woodPattern);
+        pb.addToolPattern(TinkerTools.woodPattern);
     }
 
     private void registerStencils ()
@@ -956,5 +1024,10 @@ public class TinkerTools
         public static final int PigIron = 18;
 
         public static final int Thaumium = 31;
+    }
+
+    public static Block getPlateByName(String name) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

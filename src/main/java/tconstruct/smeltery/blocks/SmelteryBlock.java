@@ -23,6 +23,7 @@ import tconstruct.util.config.PHConstruct;
 
 public class SmelteryBlock extends InventoryBlock
 {
+    public static final int GLASS = 0;
     public static final int DRAIN_OUT = 4;
     public static final int DRAIN_BASIN = 5;
 
